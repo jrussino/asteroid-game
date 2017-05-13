@@ -10,11 +10,7 @@ class Asteroid : public GameObject
     public:
     Asteroid(std::vector<double> position, std::vector<double> velocity, int radius);
     ~Asteroid();
-
-    private:
-    int radius;
-    std::vector<double> position;
-    std::vector<double> velocity;
+//    std::pair<short int*, short int*> GetPolygon();
 };
 
 #endif // ASTEROID_H

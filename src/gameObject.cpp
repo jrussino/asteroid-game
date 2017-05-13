@@ -10,10 +10,10 @@ double wrapValue(double value, double minVal, double maxVal)
     return fmod(tmpVal, range);
 }
 
-GameObject::GameObject(std::vector<double> position, std::vector<double> velocity) :
-    position(position),
-    velocity(velocity)
+GameObject::GameObject(std::vector<double> position) :
+    position(position)
 {
+    velocity = std::vector<double>({0,0});
 }
 
 GameObject::~GameObject()
