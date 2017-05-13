@@ -3,6 +3,7 @@
 #include <vector>   /* vector */
 
 #include "asteroid.h"
+#include "player.h"
 #include "renderer.h"
 
 // Configurable stuff:
@@ -47,18 +48,19 @@ int main( int argc, char* argv[] )
     // Instantiate renderer
     Renderer renderer = Renderer(screenWidth, screenHeight);
 
+    // Instantiate ship at center of screen with zero velocity
+    std::vector<GameObject> gameObjects;
+    Player player = Player(std::vector<double>({screenWidth/2, screenHeight/2}));
+    gameObjects.push_back(player);
 
     // Instantiate n asteroids, each with random position and velocity
-    std::vector<Asteroid> asteroids;
     for( int i = 0; i < nAsteroids; i++)
     {
         std::vector<double> position({randomX(re), randomY(re)});
         std::vector<double> velocity({randomV(re), randomV(re)});
         Asteroid asteroid = Asteroid(position, velocity, asteroidRadius); 
-        asteroids.push_back(asteroid);
+        gameObjects.push_back(asteroid);
     }
-    
-    // TODO Instantiate ship at center of screen with zero velocity
 
     // Run until no more lives left
     bool quit = false;
@@ -69,10 +71,10 @@ int main( int argc, char* argv[] )
 
         //Update positions of all game objects and redraw
         renderer.Clear();
-        for(std::vector<Asteroid>::iterator asteroid = asteroids.begin(); asteroid != asteroids.end(); ++asteroid)
+        for(std::vector<GameObject>::iterator gameObject = gameObjects.begin(); gameObject != gameObjects.end(); ++gameObject)
         {
-            asteroid->Update(screenWidth, screenHeight);
-            renderer.DrawObject(&*asteroid);
+            gameObject->Update(screenWidth, screenHeight);
+            renderer.DrawObject(&*gameObject);
         }
         renderer.Render();
         SDL_Delay(30);//TODO (1/framerate - elapsed_time)
