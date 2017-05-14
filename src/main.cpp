@@ -5,6 +5,7 @@
 #include <Eigen/Geometry>
 
 #include "asteroid.h"
+#include "keyboardController.h"
 #include "player.h"
 #include "renderer.h"
 
@@ -23,26 +24,6 @@ std::uniform_real_distribution<double> randomV(-vMax, vMax);
 std::default_random_engine re;
 
 
-//Dummy controller - just handles QUIT signal (from ctrl+C or window close)
-SDL_Event e;
-bool dummy_controller()
-{
-    bool quit = false;
-
-    //Handle events on queue
-    while( SDL_PollEvent( &e ) != 0 )
-    {
-        //User requests quit
-        if( e.type == SDL_QUIT )
-        {
-            quit = true;
-        }
-    }
-
-    return quit;
-}
-
-
 int main( int argc, char* argv[] )
 {
     printf("Starting Game\n");
@@ -51,16 +32,19 @@ int main( int argc, char* argv[] )
     Renderer renderer = Renderer(screenWidth, screenHeight);
 
     // Instantiate ship at center of screen
-    std::vector<GameObject> gameObjects;
-    Player player = Player(Eigen::Vector2d(screenWidth/2, screenHeight/2));
+    std::vector<GameObject*> gameObjects;
+    Player* player = new Player(Eigen::Vector2d(screenWidth/2, screenHeight/2));
     gameObjects.push_back(player);
+
+    // Create controller
+    KeyboardController controller = KeyboardController(player);
 
     // Instantiate n asteroids, each with random position and velocity
     for( int i = 0; i < nAsteroids; i++)
     {
         Eigen::Vector2d position(randomX(re), randomY(re));
         Eigen::Vector2d velocity(randomV(re), randomV(re));
-        Asteroid asteroid = Asteroid(position, velocity, asteroidRadius); 
+        Asteroid* asteroid = new Asteroid(position, velocity, asteroidRadius); 
         gameObjects.push_back(asteroid);
     }
 
@@ -69,20 +53,25 @@ int main( int argc, char* argv[] )
     while( (nShips > 0) && (quit == false))
     {
         //Apply control inputs
-        quit = dummy_controller();
+        quit = !controller.Update();
 
         //Update positions of all game objects and redraw
         renderer.Clear();
-        for(std::vector<GameObject>::iterator gameObject = gameObjects.begin(); gameObject != gameObjects.end(); ++gameObject)
+        for(std::vector<GameObject*>::iterator gameObject = gameObjects.begin(); gameObject != gameObjects.end(); ++gameObject)
         {
-            gameObject->Update(screenWidth, screenHeight);
-            renderer.DrawObject(&*gameObject);
+            (*gameObject)->Update(screenWidth, screenHeight);
+            renderer.DrawObject(*gameObject);
         }
         renderer.Render();
         SDL_Delay(30);//TODO (1/framerate - elapsed_time)
     }
 
     renderer.Clear();
+
+    for(std::vector<GameObject*>::iterator gameObject = gameObjects.begin(); gameObject != gameObjects.end(); ++gameObject)
+    {
+        delete *gameObject;
+    }
 
     printf("GAME OVER\n");
 }
