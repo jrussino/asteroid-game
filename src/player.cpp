@@ -13,6 +13,7 @@ Player::Player(Eigen::Vector2d position, Controller* controller) :
     vRot(0.1),
     vBullet(10.0),
     fireRefresh(5000),
+    bulletLifetime(18000),
     rotation(0.0)
 {
     // Player ship is an arrowhead
@@ -90,8 +91,7 @@ void Player::Fire()
     clock_t now = clock();
     if(now - lastFireTime > fireRefresh)
     {
-        newGameObjects.push_back(new Bullet(GetPosition(), velocity + vBullet * (rotation * forward)));
-        printf("\tFire\n");
+        newGameObjects.push_back(new Bullet(GetPosition(), velocity + vBullet * (rotation * forward), bulletLifetime));
         lastFireTime = now;
     }
 }

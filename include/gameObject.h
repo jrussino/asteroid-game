@@ -17,8 +17,10 @@ class GameObject
     Eigen::Vector2i GetPos();
     std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
     Eigen::Vector2d GetPosition();
+    bool IsActive();
 
     protected:
+    bool active;
     GameState* gameState;
     Eigen::Vector2d velocity;
     std::vector<Eigen::Vector2d> polygon;

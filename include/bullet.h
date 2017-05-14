@@ -1,6 +1,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
+#include <time.h>
 #include <vector>
 
 #include <Eigen/Geometry>
@@ -10,9 +11,13 @@
 class Bullet : public GameObject
 {
     public:
-    Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity);
+    Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity, clock_t lifetime);
     ~Bullet();
-//    std::pair<short int*, short int*> GetPolygon();
+    void Update(GameState* gameState);
+
+    private:
+    clock_t lifetime;
+    clock_t startTime;
 };
 
 #endif // BULLET_H

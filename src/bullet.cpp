@@ -2,8 +2,9 @@
 
 #include <Eigen/Geometry>
 
-Bullet::Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity) :
-    GameObject(position)
+Bullet::Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity, clock_t lifetime) :
+    GameObject(position),
+    lifetime(lifetime)
 {
     this->velocity = velocity;
 
@@ -17,8 +18,19 @@ Bullet::Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity) :
         double y = radius*cos(i*2*M_PI/nVertices);
         polygon.push_back(Eigen::Vector2d(x, y));
     }
+
+    startTime = clock();
 }
 
 Bullet::~Bullet()
 {
+}
+
+void Bullet::Update(GameState* gameState)
+{
+    GameObject::Update(gameState);
+    if(clock() - startTime > lifetime)
+    {
+        active = false;
+    }
 }

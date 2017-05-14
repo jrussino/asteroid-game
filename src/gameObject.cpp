@@ -12,7 +12,8 @@ double wrapValue(double value, double minVal, double maxVal)
 
 GameObject::GameObject(Eigen::Vector2d position) :
     position(position),
-    velocity(0,0)
+    velocity(0,0),
+    active(true)
 {
     // Default polygon = octagon of radius 10
     double radius = 10;
@@ -63,4 +64,9 @@ Eigen::Vector2d GameObject::GetPosition()
 std::vector<GameObject*> GameObject::GetNewObjects()
 {
     return newGameObjects;
+}
+
+bool GameObject::IsActive()
+{
+    return active;
 }

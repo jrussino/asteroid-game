@@ -27,6 +27,7 @@ class Player : public GameObject
     double vBullet;
     clock_t fireRefresh;
     clock_t lastFireTime;
+    clock_t bulletLifetime;
     Eigen::Vector2d forward;
     Eigen::Rotation2D<double>  vRot;
     Eigen::Rotation2D<double> rotation;
