@@ -4,11 +4,19 @@
 
 Player::Player(Eigen::Vector2d position) :
     GameObject(position),
-    direction(0.0,-1.0),
+    forward(0.0,-1.0),
     acceleration(0.2),
     drag(0.995),
-    rotationMatrix(0.1)
+    vRot(0.1),
+    rotation(0.0)
 {
+    // Player ship is an arrowhead
+    polygon.clear();
+    polygon.push_back(Eigen::Vector2d(0.0, -10.0));
+    polygon.push_back(Eigen::Vector2d(-5.0, 5.0));
+    polygon.push_back(Eigen::Vector2d(0.0, 4.0));
+    polygon.push_back(Eigen::Vector2d(5.0, 5.0));
+    defaultPolygon = polygon;
 }
 
 Player::~Player()
@@ -23,17 +31,25 @@ void Player::Update(int screenWidth, int screenHeight)
 
 void Player::TurnLeft()
 {
-    direction = rotationMatrix.inverse()*direction;
+    rotation = rotation * vRot.inverse();
+    for(int i = 0; i < polygon.size(); ++i)
+    {
+        polygon[i] = rotation * defaultPolygon[i];
+    }
 }
 
 void Player::TurnRight()
 {
-    direction = rotationMatrix*direction;
+    rotation = rotation * vRot;
+    for(int i = 0; i < polygon.size(); ++i)
+    {
+        polygon[i] = rotation * defaultPolygon[i];
+    }
 }
 
 void Player::Thrust()
 {
-    velocity += direction * acceleration;
+    velocity += acceleration * (rotation * forward);
 }
 
 void Player::Fire()

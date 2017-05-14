@@ -19,14 +19,14 @@ class Player : public GameObject
     void Thrust();
     void Fire();
 
-    protected:
-    Eigen::Vector2d direction;
-    double vRot;
+    private:
     double acceleration;
     double drag;
+    Eigen::Vector2d forward;
+    Eigen::Rotation2D<double>  vRot;
+    Eigen::Rotation2D<double> rotation;
+    std::vector<Eigen::Vector2d> defaultPolygon;
 
-    private:
-    Eigen::Rotation2D<double> rotationMatrix;
 };
 
 #endif // PLAYER_H

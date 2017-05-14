@@ -35,11 +35,8 @@ void Renderer::Clear()
 
 void Renderer::DrawObject(GameObject* gameObject)
 {
-    //Draw a circle
-    //TODO object-specific shape/icon, or polygons
-    int circleRadius = 10; //XXX get this property from gameobject
-    Eigen::Vector2i pos = gameObject->GetPos();
-    aacircleColor( sdlRenderer, pos(0), pos(1), circleRadius, 0xFFFFFFFF);
+    std::pair<std::vector<short int>, std::vector<short int> > verts = gameObject->GetPolygon();
+    polygonColor( sdlRenderer, verts.first.data(), verts.second.data(), verts.first.size(), 0xFFFFFFFF);
 }
 
 void Renderer::Render()

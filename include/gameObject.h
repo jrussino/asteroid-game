@@ -13,10 +13,11 @@ class GameObject
     virtual ~GameObject();
     virtual void Update(int screenWidth, int screenHeight);
     Eigen::Vector2i GetPos();
-//    virtual std::pair<short int*, short int*> GetPolygon() = 0;
+    std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
 
     protected:
     Eigen::Vector2d velocity;
+    std::vector<Eigen::Vector2d> polygon;
 
     private:
     Eigen::Vector2d position;
