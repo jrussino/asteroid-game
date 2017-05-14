@@ -1,17 +1,15 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "player.h"
+#include <vector>
 
 class Controller
 {
     public:
-    Controller(Player* player);
+    Controller();
     ~Controller();
-    virtual bool Update() = 0;
-
-    protected:
-    Player* player;
+    enum Command {TURN_LEFT, TURN_RIGHT, THRUST, FIRE, QUIT};
+    virtual std::vector<Command> Update() = 0;
 };
 
 #endif // CONTROLLER_H

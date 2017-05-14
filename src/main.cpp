@@ -5,9 +5,11 @@
 #include <Eigen/Geometry>
 
 #include "asteroid.h"
+#include "controller.h"
 #include "game.h"
 #include "gameState.h"
 #include "gameObject.h"
+#include "keyboardController.h"
 #include "player.h"
 
 // Configurable stuff:
@@ -33,7 +35,8 @@ int main( int argc, char* argv[] )
     Game game(gameState);
 
     // Instantiate ship at center of screen
-    Player* player = new Player(Eigen::Vector2d(screenWidth/2, screenHeight/2));
+    KeyboardController* controller = new KeyboardController();
+    Player* player = new Player(Eigen::Vector2d(screenWidth/2, screenHeight/2), controller);
     game.AddObject(player);
 
     // Instantiate n asteroids, each with random position and velocity

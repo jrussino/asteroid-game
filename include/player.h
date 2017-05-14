@@ -1,16 +1,18 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <time.h>
 #include <vector>
 
 #include <Eigen/Geometry>
 
+#include "controller.h"
 #include "gameObject.h"
 
 class Player : public GameObject
 {
     public:
-    Player(Eigen::Vector2d position);
+    Player(Eigen::Vector2d position, Controller* controller);
     ~Player();
     void Update(GameState* gameState);
 
@@ -22,10 +24,14 @@ class Player : public GameObject
     private:
     double acceleration;
     double drag;
+    double vBullet;
+    clock_t fireRefresh;
+    clock_t lastFireTime;
     Eigen::Vector2d forward;
     Eigen::Rotation2D<double>  vRot;
     Eigen::Rotation2D<double> rotation;
     std::vector<Eigen::Vector2d> defaultPolygon;
+    Controller* controller;
 
 };
 

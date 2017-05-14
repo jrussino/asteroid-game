@@ -31,6 +31,8 @@ GameObject::~GameObject()
 
 void GameObject::Update(GameState* gameState)
 {
+    newGameObjects.clear();
+
     position(0) = wrapValue(position(0) + velocity(0), 0, gameState->screenWidth);
     position(1) = wrapValue(position(1) + velocity(1), 0, gameState->screenHeight);
 }
@@ -51,4 +53,14 @@ std::pair<std::vector<short int>, std::vector<short int> > GameObject::GetPolygo
     }
 
     return std::pair<std::vector<short int>, std::vector<short int> >(vertsX, vertsY);
+}
+
+Eigen::Vector2d GameObject::GetPosition()
+{
+    return position;
+}
+
+std::vector<GameObject*> GameObject::GetNewObjects()
+{
+    return newGameObjects;
 }

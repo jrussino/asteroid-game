@@ -8,9 +8,9 @@
 class KeyboardController : public Controller
 {
     public:
-    KeyboardController(Player* player);
+    KeyboardController();
     ~KeyboardController();
-    bool Update();
+    std::vector<Controller::Command> Update();
 
     private:
     SDL_Event event;
