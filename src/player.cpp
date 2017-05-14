@@ -23,9 +23,9 @@ Player::~Player()
 {
 }
 
-void Player::Update(int screenWidth, int screenHeight)
+void Player::Update(GameState* gameState)
 {
-    GameObject::Update(screenWidth, screenHeight);
+    GameObject::Update(gameState);
     velocity *= drag;
 }
 

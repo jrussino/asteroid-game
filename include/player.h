@@ -12,7 +12,7 @@ class Player : public GameObject
     public:
     Player(Eigen::Vector2d position);
     ~Player();
-    void Update(int screenWidth, int screenHeight);
+    void Update(GameState* gameState);
 
     void TurnLeft();
     void TurnRight();
