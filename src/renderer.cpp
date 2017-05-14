@@ -1,5 +1,6 @@
 #include "renderer.h"
 
+#include <Eigen/Geometry>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 
@@ -37,8 +38,8 @@ void Renderer::DrawObject(GameObject* gameObject)
     //Draw a circle
     //TODO object-specific shape/icon, or polygons
     int circleRadius = 10; //XXX get this property from gameobject
-    std::vector<int> pos = gameObject->GetPos();
-    aacircleColor( sdlRenderer, pos[0], pos[1], circleRadius, 0xFFFFFFFF);
+    Eigen::Vector2i pos = gameObject->GetPos();
+    aacircleColor( sdlRenderer, pos(0), pos(1), circleRadius, 0xFFFFFFFF);
 }
 
 void Renderer::Render()

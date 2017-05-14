@@ -1,7 +1,8 @@
 #include "player.h"
 
+#include <Eigen/Geometry>
 
-Player::Player(std::vector<double> position) :
+Player::Player(Eigen::Vector2d position) :
     GameObject(position)
 {
 }

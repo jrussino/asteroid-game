@@ -2,6 +2,8 @@
 #include <stdio.h>  /* printf */ 
 #include <vector>   /* vector */
 
+#include <Eigen/Geometry>
+
 #include "asteroid.h"
 #include "player.h"
 #include "renderer.h"
@@ -48,16 +50,16 @@ int main( int argc, char* argv[] )
     // Instantiate renderer
     Renderer renderer = Renderer(screenWidth, screenHeight);
 
-    // Instantiate ship at center of screen with zero velocity
+    // Instantiate ship at center of screen
     std::vector<GameObject> gameObjects;
-    Player player = Player(std::vector<double>({screenWidth/2, screenHeight/2}));
+    Player player = Player(Eigen::Vector2d(screenWidth/2, screenHeight/2));
     gameObjects.push_back(player);
 
     // Instantiate n asteroids, each with random position and velocity
     for( int i = 0; i < nAsteroids; i++)
     {
-        std::vector<double> position({randomX(re), randomY(re)});
-        std::vector<double> velocity({randomV(re), randomV(re)});
+        Eigen::Vector2d position(randomX(re), randomY(re));
+        Eigen::Vector2d velocity(randomV(re), randomV(re));
         Asteroid asteroid = Asteroid(position, velocity, asteroidRadius); 
         gameObjects.push_back(asteroid);
     }

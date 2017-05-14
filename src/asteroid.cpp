@@ -1,7 +1,8 @@
 #include "asteroid.h"
 
+#include <Eigen/Geometry>
 
-Asteroid::Asteroid(std::vector<double> position, std::vector<double> velocity, int radius) :
+Asteroid::Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity, int radius) :
     GameObject(position)
 {
     this->velocity = velocity;

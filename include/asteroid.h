@@ -3,12 +3,14 @@
 
 #include <vector>
 
+#include <Eigen/Geometry>
+
 #include "gameObject.h"
 
 class Asteroid : public GameObject
 {
     public:
-    Asteroid(std::vector<double> position, std::vector<double> velocity, int radius);
+    Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity, int radius);
     ~Asteroid();
 //    std::pair<short int*, short int*> GetPolygon();
 };

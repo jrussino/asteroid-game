@@ -3,12 +3,14 @@
 
 #include <vector>
 
+#include <Eigen/Geometry>
+
 #include "gameObject.h"
 
 class Player : public GameObject
 {
     public:
-    Player(std::vector<double> position);
+    Player(Eigen::Vector2d position);
     ~Player();
 };
 

@@ -3,19 +3,21 @@
 
 #include <vector>
 
+#include <Eigen/Geometry>
+
 
 class GameObject
 {
     public:
-    GameObject(std::vector<double> position);
+    GameObject(Eigen::Vector2d position);
     ~GameObject();
     void Update(int screenWidth, int screenHeight);
-    std::vector<int> GetPos();
+    Eigen::Vector2i GetPos();
 //    virtual std::pair<short int*, short int*> GetPolygon() = 0;
 
     protected:
-    std::vector<double> position;
-    std::vector<double> velocity;
+    Eigen::Vector2d position;
+    Eigen::Vector2d velocity;
 };
 
 #endif // GAMEOBJECT_H
