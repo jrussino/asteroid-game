@@ -1,6 +1,7 @@
 #include "game.h"
 
 #include <queue>
+#include <time.h>
 
 Game::Game(GameState gameState) :
     state(gameState),
@@ -30,6 +31,8 @@ void Game::Run()
     std::queue<GameObject*> toRemoveQueue;
     while( (state.nLives > 0) && (state.active == true) )
     {
+        clock_t loopStart = clock();
+
         //Update positions of all game objects and redraw
         std::vector<GameObject*> newObjects;
         renderer.Clear();
@@ -67,6 +70,12 @@ void Game::Run()
             gameObjects.push_back(toAddQueue.front());
             toAddQueue.pop();
         }
-        SDL_Delay(30);//TODO (1/framerate - elapsed_time)
-   } 
+
+        clock_t  elapsedTime = clock() - loopStart;
+        float elapsedTime_ms = (clock() - loopStart) * (1000.0/CLOCKS_PER_SEC);
+        if (elapsedTime_ms < 1000.0/state.fps)
+        {
+            SDL_Delay(static_cast<int>(1000.0/state.fps - elapsedTime_ms));
+        }
+    } 
 }

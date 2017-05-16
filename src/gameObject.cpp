@@ -1,6 +1,7 @@
 #include "gameObject.h"
 
 #include <math.h>
+
 #include <Eigen/Geometry>
 
 double wrapValue(double value, double minVal, double maxVal)
