@@ -15,6 +15,7 @@
 #include "Game.hpp"
 
 #include <queue>
+#include <iostream>
 #include <time.h>
 
 
@@ -78,6 +79,8 @@ void Game::Run()
    // Initialize the renderer
    if (renderer.Initialize() == false)
    {
+      std::cerr << "ERROR - could not initialize renderer; game will not proceed."
+                << std::endl;
       return;
    }
 

@@ -14,6 +14,8 @@
 //------------------------------------------------------------------------------
 #include "Renderer.hpp"
 
+#include <iostream>
+
 #include <Eigen/Geometry>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
@@ -61,10 +63,17 @@ Renderer::~Renderer()
 //------------------------------------------------------------------------------
 void Renderer::Clear()
 {
-   //Clear screen
-   SDL_SetRenderDrawColor(sdlRenderer, 0x00, 0x00, 0x00, 0xFF);
-   SDL_RenderClear(sdlRenderer);
-
+   if (initialized == true)
+   {
+      //Clear screen
+      SDL_SetRenderDrawColor(sdlRenderer, 0x00, 0x00, 0x00, 0xFF);
+      SDL_RenderClear(sdlRenderer);
+   }
+   else
+   {
+      std::cerr << "WARNING - attempting to clear window, but renderer is not initialized."
+                << std::endl;
+   }
 }
 
 //------------------------------------------------------------------------------
@@ -78,13 +87,21 @@ void Renderer::Clear()
 //------------------------------------------------------------------------------
 void Renderer::DrawObject(GameObject *gameObject)
 {
-   std::pair<std::vector<short int>,
-           std::vector<short int> > verts = gameObject->GetPolygon();
-   polygonColor(sdlRenderer,
-             verts.first.data(),
-             verts.second.data(),
-             verts.first.size(),
-             0xFFFFFFFF);
+   if (initialized == true)
+   {
+      std::pair<std::vector<short int>,
+                std::vector<short int> > verts = gameObject->GetPolygon();
+      polygonColor(sdlRenderer,
+                   verts.first.data(),
+                   verts.second.data(),
+                   verts.first.size(),
+                   0xFFFFFFFF);
+   }
+   else
+   {
+      std::cerr << "WARNING - attempting to draw object, but renderer is not initialized."
+                << std::endl;
+   }
 }
 
 //------------------------------------------------------------------------------
@@ -108,6 +125,8 @@ void Renderer::Render()
  *
  * @todo this should throw an exception if it fails; game can't proceed if we
  * can't render graphics.
+ *
+ * @note anything using Renderer MUST call this 
  */
 //------------------------------------------------------------------------------
 bool Renderer::Initialize()
@@ -123,7 +142,9 @@ bool Renderer::Initialize()
    //Initialize SDL
    if (SDL_Init(SDL_INIT_VIDEO) < 0)
    {
-      printf("SDL could not initialize! SDL_Error: %s\n",  SDL_GetError());
+      std::cerr << "SDL could not initialize! SDL_Error: "
+                << SDL_GetError()
+                << std::endl;
       initialized = false;
    }
    else 
@@ -136,8 +157,9 @@ bool Renderer::Initialize()
                             SDL_WINDOW_SHOWN);
       if (sdlWindow == NULL)
       {
-         printf("Window could not be created! SDL_Error: %s\n",
-               SDL_GetError());
+         std::cerr << "Window could not be created! SDL_Error: "
+                   << SDL_GetError()
+                   << std::endl;
          initialized = false;
       }
       else
@@ -148,8 +170,9 @@ bool Renderer::Initialize()
                                   SDL_RENDERER_ACCELERATED);
          if (sdlRenderer == NULL)
          {
-            printf("Renderer could not be created! SDL Error: %s\n",
-                  SDL_GetError());
+            std::cerr << "Renderer could not be created! SDL Error: "
+                      << SDL_GetError()
+                      << std::endl;
             initialized = false;
          }
       }
