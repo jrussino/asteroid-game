@@ -75,6 +75,12 @@ void Game::AddObject(GameObject *gameObject)
 //------------------------------------------------------------------------------
 void Game::Run()
 {
+   // Initialize the renderer
+   if (renderer.Initialize() == false)
+   {
+      return;
+   }
+
    // Run until no more lives left
    std::queue<GameObject*> toAddQueue;
    std::queue<GameObject*> toRemoveQueue;

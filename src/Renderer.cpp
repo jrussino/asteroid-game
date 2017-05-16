@@ -31,13 +31,9 @@
 //------------------------------------------------------------------------------
 Renderer::Renderer(int width, int height) :
    screenWidth(width),
-   screenHeight(height)
+   screenHeight(height),
+   initialized(false)
 {
-   Init();
-   if (initialized == false)
-   {
-      printf("WARNING - failed to initialize renderer\n");
-   }
 }
 
 //------------------------------------------------------------------------------
@@ -104,7 +100,7 @@ void Renderer::Render()
 }
 
 //------------------------------------------------------------------------------
-// void Init()
+// void Initialize()
 //------------------------------------------------------------------------------
 /**
  * Creates the game window and initiailzes the SDL renderer that will be used to
@@ -114,14 +110,21 @@ void Renderer::Render()
  * can't render graphics.
  */
 //------------------------------------------------------------------------------
-void Renderer::Init()
+bool Renderer::Initialize()
 {
-   initialized = true;
+   // Only initialize once
+   if (initialized == true)
+   {
+      return true;
+   }
+
+   initialized = true;  // true unless one of the followinc checks fails
 
    //Initialize SDL
    if (SDL_Init(SDL_INIT_VIDEO) < 0)
    {
       printf("SDL could not initialize! SDL_Error: %s\n",  SDL_GetError());
+      initialized = false;
    }
    else 
    {
@@ -152,5 +155,5 @@ void Renderer::Init()
       }
    }
 
-   return;
+   return initialized;
 }

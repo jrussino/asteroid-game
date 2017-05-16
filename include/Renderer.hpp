@@ -26,19 +26,17 @@ class Renderer
    void Clear();
    void DrawObject(GameObject *gameObject);
    void Render();
-
-   bool initialized;
+   bool Initialize();
 
    private:
    Renderer();
    Renderer(const Renderer &renderer);
    Renderer & operator=(const Renderer &renderer);
 
-   void Init();
-
    int screenWidth;  // screen width (in pixels)
    int screenHeight; // screen height (in pixels)
 
+   bool initialized; // True if window and renderer successfully created
    
    SDL_Window *sdlWindow = NULL;     // the window we'll be rendering to
    SDL_Renderer *sdlRenderer = NULL; // the renderer - renders images to the window
