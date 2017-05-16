@@ -49,6 +49,10 @@ class GameObject
    std::vector<GameObject*> newGameObjects; // container for new objects instantiated by this one
 
    private:
+   GameObject();
+   GameObject(const GameObject &gameObject);
+   GameObject & operator=(const GameObject &gameObject);
+
    Eigen::Vector2d position; // position on screen (in pixels)
 };
 

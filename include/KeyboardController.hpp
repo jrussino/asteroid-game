@@ -27,6 +27,9 @@ class KeyboardController : public Controller
    std::vector<Controller::Command> Update();
 
    private:
+   KeyboardController(const KeyboardController &keyboardController);
+   KeyboardController & operator=(const KeyboardController &keyboardController);
+
    SDL_Event event; // events from the SDL subsystem (used for keyboard events)
 };
 #endif // KEYBOARD_CONTROLLER_H

@@ -29,8 +29,11 @@ class Renderer
 
    bool initialized;
 
-
    private:
+   Renderer();
+   Renderer(const Renderer &renderer);
+   Renderer & operator=(const Renderer &renderer);
+
    void Init();
 
    int screenWidth;  // screen width (in pixels)

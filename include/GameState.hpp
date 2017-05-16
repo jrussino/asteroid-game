@@ -33,6 +33,11 @@ class GameState
 
    int screenWidth;  // screen width (in pixels)
    int screenHeight; // screen height (in pixels)
+
+   private:
+   GameState();
+   GameState(const GameState &gameState);
+   GameState & operator=(const GameState &gameState);
 };
 
 #endif // GAME_STATE_H

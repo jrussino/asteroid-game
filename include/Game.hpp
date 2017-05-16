@@ -31,7 +31,11 @@ class Game
    void Run();
 
    private:
-   GameState state;
+   Game();
+   Game(const Game &game);
+   Game & operator=(const Game &game);
+
+   GameState &state;
    Renderer renderer;
    std::vector<GameObject*> gameObjects;
    

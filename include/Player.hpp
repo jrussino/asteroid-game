@@ -36,6 +36,10 @@ class Player : public GameObject
    void Fire();
 
    private:
+   Player();
+   Player(const Player &player);
+   Player & operator=(const Player &player);
+
    double acceleration;                // acceleration (in pixels/s^2)
    double damping;                     // damping coefficent - decreases velocity over time
    double vBullet;                     // velocity for fired bullets (in pixels/second)

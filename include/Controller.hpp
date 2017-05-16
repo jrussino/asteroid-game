@@ -36,6 +36,10 @@ class Controller
    */
    //---------------------------------------------------------------------------
    virtual std::vector<Command> Update() = 0;
+
+   private:
+   Controller(const Controller &controller);
+   Controller & operator=(const Controller &controller);
 };
 
 #endif // CONTROLLER_H

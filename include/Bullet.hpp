@@ -25,13 +25,16 @@
 class Bullet : public GameObject
 {
    public:
-   Bullet(Eigen::Vector2d position,
-         Eigen::Vector2d velocity, 
-         clock_t lifetime);
+   Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity, clock_t lifetime);
    ~Bullet();
+
    void Update(GameState *gameState);
 
    private:
+   Bullet();
+   Bullet(const Bullet &bullet);
+   Bullet & operator=(Bullet &bullet);
+
    clock_t lifetime;  // lifetime duration in clock units
    clock_t startTime; // start time in clock units
 };
