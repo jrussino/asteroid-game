@@ -4,13 +4,13 @@
 
 #include <Eigen/Geometry>
 
-#include "asteroid.hpp"
-#include "controller.hpp"
-#include "game.hpp"
-#include "gameState.hpp"
-#include "gameObject.hpp"
-#include "keyboardController.hpp"
-#include "player.hpp"
+#include "Asteroid.hpp"
+#include "Controller.hpp"
+#include "Game.hpp"
+#include "GameState.hpp"
+#include "GameObject.hpp"
+#include "KeyboardController.hpp"
+#include "Player.hpp"
 
 // Configurable stuff:
 unsigned int nAsteroids = 5;        //# of asteroids per round

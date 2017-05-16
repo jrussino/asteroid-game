@@ -6,8 +6,8 @@
 
 #include <Eigen/Geometry>
 
-#include "controller.hpp"
-#include "gameObject.hpp"
+#include "Controller.hpp"
+#include "GameObject.hpp"
 
 class Player : public GameObject
 {

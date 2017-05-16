@@ -1,4 +1,4 @@
-#include "renderer.hpp"
+#include "Renderer.hpp"
 
 #include <Eigen/Geometry>
 #include <SDL2/SDL.h>

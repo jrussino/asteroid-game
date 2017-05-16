@@ -3,9 +3,9 @@
 
 #include <vector>
 
-#include "gameObject.hpp"
-#include "gameState.hpp"
-#include "renderer.hpp"
+#include "GameObject.hpp"
+#include "GameState.hpp"
+#include "Renderer.hpp"
 
 class Game
 {

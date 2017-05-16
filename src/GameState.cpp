@@ -1,4 +1,4 @@
-#include "gameState.hpp"
+#include "GameState.hpp"
 
 GameState::GameState(int nLives, int fps, int screenWidth, int screenHeight) :
     nLives(nLives),

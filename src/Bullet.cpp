@@ -1,4 +1,4 @@
-#include "bullet.hpp"
+#include "Bullet.hpp"
 
 #include <Eigen/Geometry>
 

@@ -5,7 +5,7 @@
 
 #include <Eigen/Geometry>
 
-#include "gameObject.hpp"
+#include "GameObject.hpp"
 
 class Asteroid : public GameObject
 {

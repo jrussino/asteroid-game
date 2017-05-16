@@ -1,4 +1,4 @@
-#include "asteroid.hpp"
+#include "Asteroid.hpp"
 
 #include <Eigen/Geometry>
 

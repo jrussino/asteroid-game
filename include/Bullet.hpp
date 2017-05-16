@@ -6,7 +6,7 @@
 
 #include <Eigen/Geometry>
 
-#include "gameObject.hpp"
+#include "GameObject.hpp"
 
 class Bullet : public GameObject
 {

@@ -1,4 +1,4 @@
-#include "keyboardController.hpp"
+#include "KeyboardController.hpp"
 
 KeyboardController::KeyboardController()
 {

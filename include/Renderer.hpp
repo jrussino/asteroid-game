@@ -2,7 +2,7 @@
 #define RENDERER_H
 
 #include <SDL2/SDL.h>
-#include "gameObject.hpp"
+#include "GameObject.hpp"
 
 class Renderer
 {

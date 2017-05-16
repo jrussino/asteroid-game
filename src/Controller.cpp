@@ -1,4 +1,4 @@
-#include "controller.hpp"
+#include "Controller.hpp"
 
 Controller::Controller()
 {
