@@ -21,18 +21,20 @@ class Controller
 {
    public:
    Controller();
+   virtual ~Controller();
+
+   enum Command {TURN_LEFT, TURN_RIGHT, THRUST, FIRE, QUIT}; // set of possible commands
 
    //---------------------------------------------------------------------------
-   // virtual ~Controller()
+   // virtual std::vector<Command> ~Update()
    //---------------------------------------------------------------------------
    /**
-   * Pure virtual destructor - Controller class cannot be instantiated; derived
-   * classes must implement
+   * Gets the set of commands for a given step of the simulation.
+   *
+   * @note pure virtual - Controller cannot be instantiated; derived classes
+   * must implement this
    */
    //---------------------------------------------------------------------------
-   virtual ~Controller() = 0;
-
-   enum Command {TURN_LEFT, TURN_RIGHT, THRUST, FIRE, QUIT};
    virtual std::vector<Command> Update() = 0;
 };
 

@@ -36,7 +36,7 @@ Player::Player(Eigen::Vector2d position, Controller *controller) :
    controller(controller),
    forward(0.0,-1.0),
    acceleration(0.2),
-   drag(0.995),
+   damping(0.995),
    vRot(0.1),
    vBullet(10.0),
    fireRefresh(5000),
@@ -77,7 +77,7 @@ Player::~Player()
 void Player::Update(GameState *gameState)
 {
    GameObject::Update(gameState);
-   velocity *= drag;
+   velocity *= damping;
    std::vector<Controller::Command> commands = controller->Update();
    for (std::vector<Controller::Command>::iterator command = commands.begin();
        command != commands.end();
@@ -102,7 +102,7 @@ void Player::Update(GameState *gameState)
          break;
 
          case Controller::Command::QUIT :
-         gameState->active = false;
+         gameState->isActive = false;
          break;
 
          default:

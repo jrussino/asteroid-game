@@ -32,8 +32,8 @@ class Bullet : public GameObject
    void Update(GameState *gameState);
 
    private:
-   clock_t lifetime;
-   clock_t startTime;
+   clock_t lifetime;  // lifetime duration in clock units
+   clock_t startTime; // start time in clock units
 };
 
 #endif // BULLET_H

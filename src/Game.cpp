@@ -78,7 +78,7 @@ void Game::Run()
    // Run until no more lives left
    std::queue<GameObject*> toAddQueue;
    std::queue<GameObject*> toRemoveQueue;
-   while ( (state.nLives > 0) && (state.active == true) )
+   while ( (state.nLives > 0) && (state.isActive == true) )
    {
      clock_t loopStart = clock();
 

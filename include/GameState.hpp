@@ -26,13 +26,13 @@ class GameState
    int getScreenWidth();
    int getScreenHeight();
 
-   int nLives;
-   int score;
-   bool active;
-   int fps;
+   int nLives;    // number of lives remaining
+   int score;     // current score
+   bool isActive; // whether the game should continue
+   int fps;       // frames per second - how frequently to render images
 
-   int screenWidth;
-   int screenHeight;
+   int screenWidth;  // screen width (in pixels)
+   int screenHeight; // screen height (in pixels)
 };
 
 #endif // GAME_STATE_H

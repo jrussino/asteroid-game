@@ -42,14 +42,14 @@ class GameObject
    bool IsActive();
 
    protected:
-   bool active;
-   GameState *gameState;
-   Eigen::Vector2d velocity;
-   std::vector<Eigen::Vector2d> polygon;
-   std::vector<GameObject*> newGameObjects;
+   bool active;                             // whether or not this game object is active
+   GameState *gameState;                    // pointer to curent game state
+   Eigen::Vector2d velocity;                // velocity (in pixels/second)
+   std::vector<Eigen::Vector2d> polygon;    // polygon describing shape of the object
+   std::vector<GameObject*> newGameObjects; // container for new objects instantiated by this one
 
    private:
-   Eigen::Vector2d position;
+   Eigen::Vector2d position; // position on screen (in pixels)
 };
 
 #endif // GAMEOBJECT_H
