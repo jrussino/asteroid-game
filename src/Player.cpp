@@ -59,6 +59,11 @@ void Player::Update(GameState *gameState)
             case Controller::Command::QUIT :
             gameState->active = false;
             break;
+
+            default:
+            // This should never happen
+            printf("WARNING - Controller recieved an unknown command: %d", *command);
+            break;
         }
     }
 }
