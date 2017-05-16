@@ -1,3 +1,17 @@
+//------------------------------------------------------------------------------
+//                                 Controller 
+//------------------------------------------------------------------------------
+// Asteroid-Game 
+//
+// ** TODO LICENSE **
+// 
+// Author: Joseph A. Russino
+// Created: 2017/05/13
+//
+/**
+ * Base class for objects that control the player object
+ */
+//------------------------------------------------------------------------------
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 

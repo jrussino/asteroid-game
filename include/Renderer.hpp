@@ -1,3 +1,17 @@
+//------------------------------------------------------------------------------
+//                                 Renderer 
+//------------------------------------------------------------------------------
+// Asteroid-Game 
+//
+// ** TODO LICENSE **
+// 
+// Author: Joseph A. Russino
+// Created: 2017/05/13
+//
+/**
+ * Creates game window and renders graphical representations of game objects
+ */
+//------------------------------------------------------------------------------
 #ifndef RENDERER_H
 #define RENDERER_H
 
