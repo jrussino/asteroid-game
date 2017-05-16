@@ -41,7 +41,7 @@ int main( int argc, char *argv[] )
     game.AddObject(player);
 
     // Instantiate n asteroids, each with random position and velocity
-    for( int i = 0; i < nAsteroids; i++)
+    for ( int i = 0; i < nAsteroids; i++)
     {
         Eigen::Vector2d position(randomX(re), randomY(re));
         Eigen::Vector2d velocity(randomV(re), randomV(re));

@@ -36,9 +36,9 @@ void Player::Update(GameState *gameState)
     GameObject::Update(gameState);
     velocity *= drag;
     std::vector<Controller::Command> commands = controller->Update();
-    for(std::vector<Controller::Command>::iterator command = commands.begin(); command != commands.end(); ++command)
+    for (std::vector<Controller::Command>::iterator command = commands.begin(); command != commands.end(); ++command)
     {
-        switch( *command )
+        switch(*command)
         {
             case Controller::Command::TURN_LEFT :
             TurnLeft();
@@ -66,7 +66,7 @@ void Player::Update(GameState *gameState)
 void Player::TurnLeft()
 {
     rotation = rotation * vRot.inverse();
-    for(int i = 0; i < polygon.size(); ++i)
+    for (int i = 0; i < polygon.size(); ++i)
     {
         polygon[i] = rotation * defaultPolygon[i];
     }
@@ -75,7 +75,7 @@ void Player::TurnLeft()
 void Player::TurnRight()
 {
     rotation = rotation * vRot;
-    for(int i = 0; i < polygon.size(); ++i)
+    for (int i = 0; i < polygon.size(); ++i)
     {
         polygon[i] = rotation * defaultPolygon[i];
     }
@@ -89,7 +89,7 @@ void Player::Thrust()
 void Player::Fire()
 {
     clock_t now = clock();
-    if(now - lastFireTime > fireRefresh)
+    if (now - lastFireTime > fireRefresh)
     {
         newGameObjects.push_back(new Bullet(GetPosition(), velocity + vBullet * (rotation * forward), bulletLifetime));
         lastFireTime = now;
