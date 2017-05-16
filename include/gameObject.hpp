@@ -5,7 +5,7 @@
 
 #include <Eigen/Geometry>
 
-#include "gameState.h"
+#include "gameState.hpp"
 
 class GameObject
 {

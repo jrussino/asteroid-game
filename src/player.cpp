@@ -1,8 +1,8 @@
-#include "player.h"
+#include "player.hpp"
 
 #include <Eigen/Geometry>
 
-#include "bullet.h"
+#include "bullet.hpp"
 
 Player::Player(Eigen::Vector2d position, Controller* controller) :
     GameObject(position),

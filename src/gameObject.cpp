@@ -1,4 +1,4 @@
-#include "gameObject.h"
+#include "gameObject.hpp"
 
 #include <math.h>
 
