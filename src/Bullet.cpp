@@ -16,6 +16,17 @@
 
 #include <Eigen/Geometry>
 
+//------------------------------------------------------------------------------
+// Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity, clock_t lifetime)
+//------------------------------------------------------------------------------
+/**
+ * Constructs Bullet objects with initial position, velocity, and lifetime.
+ *
+ * @param <position> initial position vector
+ * @param <velocity> initial velocity vector
+ * @param <lifetime> time (s) the object will persist before disappearing
+ */
+//------------------------------------------------------------------------------
 Bullet::Bullet(Eigen::Vector2d position, 
             Eigen::Vector2d velocity, 
             clock_t lifetime) :
@@ -38,10 +49,26 @@ Bullet::Bullet(Eigen::Vector2d position,
    startTime = clock();
 }
 
+//------------------------------------------------------------------------------
+// ~Bullet()
+//------------------------------------------------------------------------------
+/**
+ * Destructor.
+ */
+//------------------------------------------------------------------------------
 Bullet::~Bullet()
 {
 }
 
+//------------------------------------------------------------------------------
+// void Update(GameState *gameState)
+//------------------------------------------------------------------------------
+/**
+ * Updates bullet object based on the current game state.
+ *
+ * @param <gameState> pointer to state of the game
+ */
+//------------------------------------------------------------------------------
 void Bullet::Update(GameState *gameState)
 {
    GameObject::Update(gameState);

@@ -16,14 +16,29 @@
 
 #include <Eigen/Geometry>
 
-Asteroid::Asteroid(Eigen::Vector2d position,
-               Eigen::Vector2d velocity,
-               int radius) :
+//------------------------------------------------------------------------------
+// Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity)
+//------------------------------------------------------------------------------
+/**
+ * Constructs Asteroid objects with initial position and velocity.
+ *
+ * @param <position> initial position vector
+ * @param <velocity> initial velocity vector
+ */
+//------------------------------------------------------------------------------
+Asteroid::Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity) :
    GameObject(position)
 {
    this->velocity = velocity;
 }
 
+//------------------------------------------------------------------------------
+// ~Asteroid()
+//------------------------------------------------------------------------------
+/**
+ * Destructor.
+ */
+//------------------------------------------------------------------------------
 Asteroid::~Asteroid()
 {
 }

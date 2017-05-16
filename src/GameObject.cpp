@@ -25,6 +25,15 @@ double wrapValue(double value, double minVal, double maxVal)
    return fmod(tmpVal, range);
 }
 
+//------------------------------------------------------------------------------
+// GameObject(Eigen::Vector2d position)
+//------------------------------------------------------------------------------
+/**
+ * Constructs Game Object with starting position.
+ *
+ * @param <position> initial position vector
+ */
+//------------------------------------------------------------------------------
 GameObject::GameObject(Eigen::Vector2d position) :
    position(position),
    velocity(0,0),
@@ -45,6 +54,15 @@ GameObject::~GameObject()
 {
 }
 
+//------------------------------------------------------------------------------
+// void Update(GameState *gameState)
+//------------------------------------------------------------------------------
+/**
+ * Updates Game Object based on the current game state.
+ *
+ * @param <gameState> pointer to state of the game
+ */
+//------------------------------------------------------------------------------
 void GameObject::Update(GameState *gameState)
 {
    newGameObjects.clear();
@@ -57,11 +75,29 @@ void GameObject::Update(GameState *gameState)
                      gameState->screenHeight);
 }
 
-Eigen::Vector2i GameObject::GetPos()
+//------------------------------------------------------------------------------
+// Eigen::Vector2d GetPosition()
+//------------------------------------------------------------------------------
+/**
+ * Gets the current position of the Game Object.
+ *
+ * @return Eigen::Vector2d position
+ */
+//------------------------------------------------------------------------------
+Eigen::Vector2d GameObject::GetPosition()
 {
-   return position.cast<int>();
+   return position;
 }
 
+//------------------------------------------------------------------------------
+// std::pair<std::vector<short int>, std::vector<short int> > GetPolygon()
+//------------------------------------------------------------------------------
+/**
+ * Gets the object polygon.
+ *
+ * @return std::pair<std::vector<short int>, std::vector<short int> > polygon
+ */
+//------------------------------------------------------------------------------
 std::pair<std::vector<short int>, 
         std::vector<short int> > GameObject::GetPolygon()
 {
@@ -79,16 +115,29 @@ std::pair<std::vector<short int>,
                 std::vector<short int> >(vertsX, vertsY);
 }
 
-Eigen::Vector2d GameObject::GetPosition()
-{
-   return position;
-}
-
+//------------------------------------------------------------------------------
+// std::vector<GameObject*> GetNewObjects()
+//------------------------------------------------------------------------------
+/**
+ * Gets a list of new objects spawned by this object on the latest update step.
+ *
+ * @return std::vector<GameObject*> newObjects
+ */
+//------------------------------------------------------------------------------
 std::vector<GameObject*> GameObject::GetNewObjects()
 {
    return newGameObjects;
 }
 
+//------------------------------------------------------------------------------
+// bool IsActive()
+//------------------------------------------------------------------------------
+/**
+ * Whether or not this game object is marked as active.
+ *
+ * @return bool isActive
+ */
+//------------------------------------------------------------------------------
 bool GameObject::IsActive()
 {
    return active;

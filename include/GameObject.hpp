@@ -25,12 +25,20 @@ class GameObject
 {
    public:
    GameObject(Eigen::Vector2d position);
-   virtual ~GameObject();
+   //---------------------------------------------------------------------------
+   // virtual ~GameObject()
+   //---------------------------------------------------------------------------
+   /**
+   * Pure virtual destructor - GameObject class cannot be instantiated; derived
+   * classes must implement
+   */
+   //---------------------------------------------------------------------------
+   virtual ~GameObject() = 0;
+
    virtual void Update(GameState *gameState);
    std::vector<GameObject*> GetNewObjects();
-   Eigen::Vector2i GetPos();
-   std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
    Eigen::Vector2d GetPosition();
+   std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
    bool IsActive();
 
    protected:

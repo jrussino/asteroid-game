@@ -18,6 +18,19 @@
 
 #include "Bullet.hpp"
 
+//------------------------------------------------------------------------------
+// Player(Eigen::Vector2d position, Controller *controller)
+//------------------------------------------------------------------------------
+/**
+ * Constructs Player object with initial position and a controller.
+ *
+ * @param <position>   initial position vector
+ * @param <controller> object that can alter player state (e.g. based on
+ * keyboard/joystick inputs, or some algorithm)
+ *
+ * TODO make other member vars configurable
+ */
+//------------------------------------------------------------------------------
 Player::Player(Eigen::Vector2d position, Controller *controller) :
    GameObject(position),
    controller(controller),
@@ -41,10 +54,26 @@ Player::Player(Eigen::Vector2d position, Controller *controller) :
    lastFireTime = clock();
 }
 
+//------------------------------------------------------------------------------
+// ~Player()
+//------------------------------------------------------------------------------
+/**
+ * Destructor.
+ */
+//------------------------------------------------------------------------------
 Player::~Player()
 {
 }
 
+//------------------------------------------------------------------------------
+// void Update(GameState *gameState)
+//------------------------------------------------------------------------------
+/**
+ * Updates player object based on the current game state and controller commands
+ *
+ * @param <gameState> pointer to state of the game
+ */
+//------------------------------------------------------------------------------
 void Player::Update(GameState *gameState)
 {
    GameObject::Update(gameState);
@@ -85,6 +114,13 @@ void Player::Update(GameState *gameState)
    }
 }
 
+//------------------------------------------------------------------------------
+// void TurnLeft()
+//------------------------------------------------------------------------------
+/**
+ * Rotates the player object counter-clockwise about its center.
+ */
+//------------------------------------------------------------------------------
 void Player::TurnLeft()
 {
    rotation = rotation * vRot.inverse();
@@ -94,6 +130,13 @@ void Player::TurnLeft()
    }
 }
 
+//------------------------------------------------------------------------------
+// void TurnRight()
+//------------------------------------------------------------------------------
+/**
+ * Rotates the player object clockwise about its center.
+ */
+//------------------------------------------------------------------------------
 void Player::TurnRight()
 {
    rotation = rotation * vRot;
@@ -103,11 +146,29 @@ void Player::TurnRight()
    }
 }
 
+//------------------------------------------------------------------------------
+// void Thrust()
+//------------------------------------------------------------------------------
+/**
+ * Accelerates player object in the direction it is facing.
+ */
+//------------------------------------------------------------------------------
 void Player::Thrust()
 {
    velocity += acceleration * (rotation * forward);
 }
 
+//------------------------------------------------------------------------------
+// void Fire()
+//------------------------------------------------------------------------------
+/**
+ * Instantiates a new bullet object at player's location and adds it to the list
+ * of game objects.
+ *
+ * @note bullet velocity will be (player velocity + (player direction * bullet 
+ * speed))
+ */
+//------------------------------------------------------------------------------
 void Player::Fire()
 {
    clock_t now = clock();

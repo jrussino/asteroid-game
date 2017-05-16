@@ -24,7 +24,7 @@
 class Asteroid : public GameObject
 {
    public:
-   Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity, int radius);
+   Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity);
    ~Asteroid();
 };
 

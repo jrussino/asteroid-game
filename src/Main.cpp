@@ -14,7 +14,6 @@
 
 // Configurable stuff:
 unsigned int nAsteroids = 5;     //# of asteroids per round
-int asteroidRadius = 10;         //asteroid radius in pixels
 unsigned int nShips = 3;         //number of player ships (aka how many times we can be hit before game ends)
 unsigned int screenWidth = 640;     //width of game area in pixels
 unsigned int screenHeight = 480; //height of game area in pixels
@@ -46,7 +45,7 @@ int main( int argc, char *argv[] )
    {
       Eigen::Vector2d position(randomX(re), randomY(re));
       Eigen::Vector2d velocity(randomV(re), randomV(re));
-      Asteroid *asteroid = new Asteroid(position, velocity, asteroidRadius); 
+      Asteroid *asteroid = new Asteroid(position, velocity); 
       game.AddObject(asteroid);
    }
 

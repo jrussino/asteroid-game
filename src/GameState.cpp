@@ -14,6 +14,19 @@
 //------------------------------------------------------------------------------
 #include "GameState.hpp"
 
+//------------------------------------------------------------------------------
+// GameState(int nLives, int fps, int screenWidth, int screenHeight)
+//------------------------------------------------------------------------------
+/**
+ * Constructs GameState object; initialized with game configuration.
+ *
+ * @param <nLives>       number of player lives - determines when game ends
+ * @param <fps>          frames per second - descrinbe how long to delay between
+ *                       rendering frames  
+ * @param <screenWidth>  width of the game screen
+ * @param <screenHeight> height of the game screen
+ */
+//------------------------------------------------------------------------------
 GameState::GameState(int nLives, int fps, int screenWidth, int screenHeight) :
    nLives(nLives),
    score(0),
@@ -24,6 +37,13 @@ GameState::GameState(int nLives, int fps, int screenWidth, int screenHeight) :
 {
 }
 
+//------------------------------------------------------------------------------
+// ~GameState()
+//------------------------------------------------------------------------------
+/**
+ * Destructor.
+ */
+//------------------------------------------------------------------------------
 GameState::~GameState()
 {
 }

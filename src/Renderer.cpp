@@ -19,6 +19,16 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 
 
+//------------------------------------------------------------------------------
+// Renderer(int screenWidth, int screenHeight)
+//------------------------------------------------------------------------------
+/**
+ * Constructs renderer object with specified window dimensions.
+ *
+ * @param <screenWidth>  width of the game screen
+ * @param <screenHeight> height of the game screen
+ */
+//------------------------------------------------------------------------------
 Renderer::Renderer(int width, int height) :
    screenWidth(width),
    screenHeight(height)
@@ -30,15 +40,29 @@ Renderer::Renderer(int width, int height) :
    }
 }
 
+//------------------------------------------------------------------------------
+// ~Renderer()
+//------------------------------------------------------------------------------
+/**
+ * Destructor.
+ * Destroys the SDL window and quits the SDL subsystem 
+ */
+//------------------------------------------------------------------------------
 Renderer::~Renderer()
 {
-   //Destroy window
    SDL_DestroyWindow(sdlWindow);
-
-   //Quit SDL subsystem
    SDL_Quit();
 }
 
+//------------------------------------------------------------------------------
+// void Clear()
+//------------------------------------------------------------------------------
+/**
+ * Clears the rendered image (to all black)
+ *
+ * @note typically used to clear the game screen before drawing a new frame
+ */
+//------------------------------------------------------------------------------
 void Renderer::Clear()
 {
    //Clear screen
@@ -47,6 +71,15 @@ void Renderer::Clear()
 
 }
 
+//------------------------------------------------------------------------------
+// void DrawObject(GameObject* gameObject)
+//------------------------------------------------------------------------------
+/**
+ * Draws the game object's polygon to the game screen
+ *
+ * @param <gameObject> pointer to the game object to draw
+ */
+//------------------------------------------------------------------------------
 void Renderer::DrawObject(GameObject *gameObject)
 {
    std::pair<std::vector<short int>,
@@ -58,12 +91,29 @@ void Renderer::DrawObject(GameObject *gameObject)
              0xFFFFFFFF);
 }
 
+//------------------------------------------------------------------------------
+// void Render()
+//------------------------------------------------------------------------------
+/**
+ * Renders a new frame
+ */
+//------------------------------------------------------------------------------
 void Renderer::Render()
 {
-   //Update screen
    SDL_RenderPresent(sdlRenderer);
 }
 
+//------------------------------------------------------------------------------
+// void Init()
+//------------------------------------------------------------------------------
+/**
+ * Creates the game window and initiailzes the SDL renderer that will be used to
+ * draw images to this window.
+ *
+ * @todo this should throw an exception if it fails; game can't proceed if we
+ * can't render graphics.
+ */
+//------------------------------------------------------------------------------
 void Renderer::Init()
 {
    initialized = true;

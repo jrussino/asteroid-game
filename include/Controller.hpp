@@ -21,7 +21,17 @@ class Controller
 {
    public:
    Controller();
-   ~Controller();
+
+   //---------------------------------------------------------------------------
+   // virtual ~Controller()
+   //---------------------------------------------------------------------------
+   /**
+   * Pure virtual destructor - Controller class cannot be instantiated; derived
+   * classes must implement
+   */
+   //---------------------------------------------------------------------------
+   virtual ~Controller() = 0;
+
    enum Command {TURN_LEFT, TURN_RIGHT, THRUST, FIRE, QUIT};
    virtual std::vector<Command> Update() = 0;
 };
