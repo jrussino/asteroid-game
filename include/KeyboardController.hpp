@@ -7,12 +7,12 @@
 
 class KeyboardController : public Controller
 {
-    public:
-    KeyboardController();
-    ~KeyboardController();
-    std::vector<Controller::Command> Update();
+   public:
+   KeyboardController();
+   ~KeyboardController();
+   std::vector<Controller::Command> Update();
 
-    private:
-    SDL_Event event;
+   private:
+   SDL_Event event;
 };
 #endif // KEYBOARD_CONTROLLER_H

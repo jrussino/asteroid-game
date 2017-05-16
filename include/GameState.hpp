@@ -5,20 +5,20 @@
 
 class GameState
 {
-    public:
-    GameState(int nLive, int fps, int screenWidth, int screenHeight);
-    ~GameState();
+   public:
+   GameState(int nLive, int fps, int screenWidth, int screenHeight);
+   ~GameState();
 
-    int getScreenWidth();
-    int getScreenHeight();
+   int getScreenWidth();
+   int getScreenHeight();
 
-    int nLives;
-    int score;
-    bool active;
-    int fps;
+   int nLives;
+   int score;
+   bool active;
+   int fps;
 
-    int screenWidth;
-    int screenHeight;
+   int screenWidth;
+   int screenHeight;
 };
 
 #endif // GAME_STATE_H
