@@ -1,3 +1,17 @@
+//------------------------------------------------------------------------------
+//                            Keyboard Controller
+//------------------------------------------------------------------------------
+// Asteroid-Game 
+//
+// ** TODO LICENSE **
+// 
+// Author: Joseph A. Russino
+// Created: 2017/05/13
+//
+/**
+ * Controls player object via keyboard input
+ */
+//------------------------------------------------------------------------------
 #include "KeyboardController.hpp"
 
 KeyboardController::KeyboardController()

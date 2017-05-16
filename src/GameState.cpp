@@ -1,3 +1,17 @@
+//------------------------------------------------------------------------------
+//                                  GameState 
+//------------------------------------------------------------------------------
+// Asteroid-Game 
+//
+// ** TODO LICENSE **
+// 
+// Author: Joseph A. Russino
+// Created: 2017/05/13
+//
+/**
+ * Provides game configuration and state information
+ */
+//------------------------------------------------------------------------------
 #include "GameState.hpp"
 
 GameState::GameState(int nLives, int fps, int screenWidth, int screenHeight) :
