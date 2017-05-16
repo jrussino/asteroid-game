@@ -19,7 +19,7 @@
 
 
 //------------------------------------------------------------------------------
-// Game(GameState gameState)
+// Game(GameState &gameState)
 //------------------------------------------------------------------------------
 /**
  * Constructs a new game.
@@ -27,7 +27,7 @@
  * @param <gameState> contains game configuration and state information
  */
 //------------------------------------------------------------------------------
-Game::Game(GameState gameState) :
+Game::Game(GameState &gameState) :
    state(gameState),
    renderer(gameState.screenWidth, gameState.screenHeight)
 {

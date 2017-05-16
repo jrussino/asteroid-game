@@ -24,7 +24,7 @@
 class Game
 {
    public:
-   Game(GameState gameState);
+   Game(GameState &gameState);
    ~Game();
    
    void AddObject(GameObject *gameObject);
