@@ -10,7 +10,7 @@ class Renderer
     Renderer(int width, int height);
     ~Renderer();
     void Clear();
-    void DrawObject(GameObject* gameObject);
+    void DrawObject(GameObject *gameObject);
     void Render();
 
     bool initialized;
@@ -24,10 +24,10 @@ class Renderer
     int screenHeight;
 
     //The window we'll be rendering to
-    SDL_Window* sdlWindow = NULL;
+    SDL_Window *sdlWindow = NULL;
 
     //The window renderer
-    SDL_Renderer* sdlRenderer = NULL;
+    SDL_Renderer *sdlRenderer = NULL;
 };
 
 #endif // RENDERER_H

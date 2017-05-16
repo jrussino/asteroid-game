@@ -12,9 +12,9 @@
 class Player : public GameObject
 {
     public:
-    Player(Eigen::Vector2d position, Controller* controller);
+    Player(Eigen::Vector2d position, Controller *controller);
     ~Player();
-    void Update(GameState* gameState);
+    void Update(GameState *gameState);
 
     void TurnLeft();
     void TurnRight();
@@ -32,7 +32,7 @@ class Player : public GameObject
     Eigen::Rotation2D<double>  vRot;
     Eigen::Rotation2D<double> rotation;
     std::vector<Eigen::Vector2d> defaultPolygon;
-    Controller* controller;
+    Controller *controller;
 
 };
 

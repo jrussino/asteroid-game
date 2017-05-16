@@ -19,7 +19,7 @@ Game::~Game()
     }
 }
 
-void Game::AddObject(GameObject* gameObject)
+void Game::AddObject(GameObject *gameObject)
 {
     gameObjects.push_back(gameObject);
 }

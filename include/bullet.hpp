@@ -13,7 +13,7 @@ class Bullet : public GameObject
     public:
     Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity, clock_t lifetime);
     ~Bullet();
-    void Update(GameState* gameState);
+    void Update(GameState *gameState);
 
     private:
     clock_t lifetime;

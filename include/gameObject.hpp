@@ -12,7 +12,7 @@ class GameObject
     public:
     GameObject(Eigen::Vector2d position);
     virtual ~GameObject();
-    virtual void Update(GameState* gameState);
+    virtual void Update(GameState *gameState);
     std::vector<GameObject*> GetNewObjects();
     Eigen::Vector2i GetPos();
     std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
@@ -21,7 +21,7 @@ class GameObject
 
     protected:
     bool active;
-    GameState* gameState;
+    GameState *gameState;
     Eigen::Vector2d velocity;
     std::vector<Eigen::Vector2d> polygon;
     std::vector<GameObject*> newGameObjects;

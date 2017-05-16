@@ -31,7 +31,7 @@ GameObject::~GameObject()
 {
 }
 
-void GameObject::Update(GameState* gameState)
+void GameObject::Update(GameState *gameState)
 {
     newGameObjects.clear();
 

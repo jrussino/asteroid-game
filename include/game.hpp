@@ -13,7 +13,7 @@ class Game
     Game(GameState gameState);
     ~Game();
     
-    void AddObject(GameObject* gameObject);
+    void AddObject(GameObject *gameObject);
     void Run();
 
     private:

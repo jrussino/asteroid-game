@@ -33,7 +33,7 @@ void Renderer::Clear()
 
 }
 
-void Renderer::DrawObject(GameObject* gameObject)
+void Renderer::DrawObject(GameObject *gameObject)
 {
     std::pair<std::vector<short int>, std::vector<short int> > verts = gameObject->GetPolygon();
     polygonColor( sdlRenderer, verts.first.data(), verts.second.data(), verts.first.size(), 0xFFFFFFFF);

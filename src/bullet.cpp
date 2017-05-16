@@ -26,7 +26,7 @@ Bullet::~Bullet()
 {
 }
 
-void Bullet::Update(GameState* gameState)
+void Bullet::Update(GameState *gameState)
 {
     GameObject::Update(gameState);
     if(clock() - startTime > lifetime)

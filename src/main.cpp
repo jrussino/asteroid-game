@@ -28,7 +28,7 @@ std::uniform_real_distribution<double> randomV(-vMax, vMax);
 std::default_random_engine re;
 
 
-int main( int argc, char* argv[] )
+int main( int argc, char *argv[] )
 {
 
     // Create new game
@@ -36,8 +36,8 @@ int main( int argc, char* argv[] )
     Game game(gameState);
 
     // Instantiate ship at center of screen
-    KeyboardController* controller = new KeyboardController();
-    Player* player = new Player(Eigen::Vector2d(screenWidth/2, screenHeight/2), controller);
+    KeyboardController *controller = new KeyboardController();
+    Player *player = new Player(Eigen::Vector2d(screenWidth/2, screenHeight/2), controller);
     game.AddObject(player);
 
     // Instantiate n asteroids, each with random position and velocity
@@ -45,7 +45,7 @@ int main( int argc, char* argv[] )
     {
         Eigen::Vector2d position(randomX(re), randomY(re));
         Eigen::Vector2d velocity(randomV(re), randomV(re));
-        Asteroid* asteroid = new Asteroid(position, velocity, asteroidRadius); 
+        Asteroid *asteroid = new Asteroid(position, velocity, asteroidRadius); 
         game.AddObject(asteroid);
     }
 

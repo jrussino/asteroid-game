@@ -4,7 +4,7 @@
 
 #include "bullet.hpp"
 
-Player::Player(Eigen::Vector2d position, Controller* controller) :
+Player::Player(Eigen::Vector2d position, Controller *controller) :
     GameObject(position),
     controller(controller),
     forward(0.0,-1.0),
@@ -31,7 +31,7 @@ Player::~Player()
 {
 }
 
-void Player::Update(GameState* gameState)
+void Player::Update(GameState *gameState)
 {
     GameObject::Update(gameState);
     velocity *= drag;
