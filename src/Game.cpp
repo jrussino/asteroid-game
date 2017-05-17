@@ -19,6 +19,9 @@
 #include <queue>    // queue
 #include <vector>   // vector
 
+//-------------------------------
+// public methods
+//-------------------------------
 
 //------------------------------------------------------------------------------
 // Game(GameState &gameState)
@@ -31,7 +34,7 @@
 //------------------------------------------------------------------------------
 Game::Game(GameState &gameState) :
    state(gameState),
-   renderer(gameState.screenWidth, gameState.screenHeight)
+   renderer(gameState.GetScreenWidth(), gameState.GetScreenHeight())
 {
 }
 

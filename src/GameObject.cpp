@@ -18,12 +18,9 @@
 
 #include <Eigen/Geometry>
 
-double wrapValue(double value, double minVal, double maxVal)
-{
-   double range = maxVal - minVal;
-   double tmpVal = value + range;
-   return fmod(tmpVal, range);
-}
+//-------------------------------
+// public methods
+//-------------------------------
 
 //------------------------------------------------------------------------------
 // GameObject(Eigen::Vector2d position)
@@ -69,10 +66,10 @@ void GameObject::Update(GameState *gameState)
 
    position(0) = wrapValue(position(0) + velocity(0),
                      0, 
-                     gameState->screenWidth);
+                     gameState->GetScreenWidth());
    position(1) = wrapValue(position(1) + velocity(1),
                      0,
-                     gameState->screenHeight);
+                     gameState->GetScreenHeight());
 }
 
 //------------------------------------------------------------------------------
@@ -142,3 +139,15 @@ bool GameObject::IsActive()
 {
    return active;
 }
+
+//-------------------------------
+// global methods
+//-------------------------------
+
+double wrapValue(double value, double minVal, double maxVal)
+{
+   double range = maxVal - minVal;
+   double tmpVal = value + range;
+   return fmod(tmpVal, range);
+}
+
