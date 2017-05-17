@@ -13,12 +13,12 @@
 #include "Player.hpp"
 
 // Configurable stuff:
-unsigned int nAsteroids = 5;     //# of asteroids per round
-unsigned int nShips = 3;         //number of player ships (aka how many times we can be hit before game ends)
-unsigned int screenWidth = 640;     //width of game area in pixels
-unsigned int screenHeight = 480; //height of game area in pixels
-double vMax = 2.0;               //max asteroid speed TODO proper units
-unsigned int fps = 60;           //frames to render per second
+unsigned int nAsteroids = 5;     // # of asteroids per round
+unsigned int nShips = 3;         // number of player ships (aka how many times we can be hit before game ends)
+unsigned int screenWidth = 640;  // width of game area (in pixels)
+unsigned int screenHeight = 480; // height of game area (in pixels)
+double vMax = 2.0;               // max asteroid speed (in pixels/second)
+unsigned int fps = 60;           // frames to render per second
 
 //Random value generators
 std::uniform_real_distribution<double> randomX(0, screenWidth);
