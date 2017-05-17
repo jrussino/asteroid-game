@@ -21,7 +21,9 @@
 //-------------------------------
 
 //------------------------------------------------------------------------------
-// Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity, clock_t lifetime)
+// Bullet(const Eigen::Vector2d &position, 
+//        const Eigen::Vector2d &velocity, 
+//        clock_t lifetime)
 //------------------------------------------------------------------------------
 /**
  * Constructs Bullet objects with initial position, velocity, and lifetime.
@@ -31,9 +33,9 @@
  * @param <lifetime> time (s) the object will persist before disappearing
  */
 //------------------------------------------------------------------------------
-Bullet::Bullet(Eigen::Vector2d position, 
-            Eigen::Vector2d velocity, 
-            clock_t lifetime) :
+Bullet::Bullet(const Eigen::Vector2d &position, 
+               const Eigen::Vector2d &velocity, 
+               clock_t lifetime) :
    GameObject(position),
    lifetime(lifetime)
 {
@@ -73,7 +75,7 @@ Bullet::~Bullet()
  * @param <gameState> pointer to state of the game
  */
 //------------------------------------------------------------------------------
-void Bullet::Update(GameState *gameState)
+void Bullet::Update(GameState *const gameState)
 {
    GameObject::Update(gameState);
    if (clock() - startTime > lifetime)

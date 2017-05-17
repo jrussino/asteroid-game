@@ -22,7 +22,7 @@
 //-------------------------------
 
 //------------------------------------------------------------------------------
-// Player(Eigen::Vector2d position, Controller *controller)
+// Player(const Eigen::Vector2d &position, Controller *const controller)
 //------------------------------------------------------------------------------
 /**
  * Constructs Player object with initial position and a controller.
@@ -34,7 +34,7 @@
  * TODO make other member vars configurable
  */
 //------------------------------------------------------------------------------
-Player::Player(Eigen::Vector2d position, Controller *controller) :
+Player::Player(const Eigen::Vector2d &position, Controller *const controller) :
    GameObject(position),
    controller(controller),
    forward(0.0,-1.0),
@@ -77,7 +77,7 @@ Player::~Player()
  * @param <gameState> pointer to state of the game
  */
 //------------------------------------------------------------------------------
-void Player::Update(GameState *gameState)
+void Player::Update(GameState *const gameState)
 {
    GameObject::Update(gameState);
    velocity *= damping;

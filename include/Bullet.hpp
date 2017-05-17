@@ -24,10 +24,12 @@
 class Bullet : public GameObject
 {
    public:
-   Bullet(Eigen::Vector2d position, Eigen::Vector2d velocity, clock_t lifetime);
+   Bullet(const Eigen::Vector2d &position, 
+          const Eigen::Vector2d &velocity, 
+          clock_t lifetime);
    ~Bullet();
 
-   void Update(GameState *gameState);
+   void Update(GameState *const gameState);
 
    private:
    Bullet();

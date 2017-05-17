@@ -25,9 +25,9 @@
 class Player : public GameObject
 {
    public:
-   Player(Eigen::Vector2d position, Controller *controller);
+   Player(const Eigen::Vector2d &position, Controller *const controller);
    ~Player();
-   void Update(GameState *gameState);
+   void Update(GameState *const gameState);
 
    void TurnLeft();
    void TurnRight();

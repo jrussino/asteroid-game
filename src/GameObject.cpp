@@ -23,7 +23,7 @@
 //-------------------------------
 
 //------------------------------------------------------------------------------
-// GameObject(Eigen::Vector2d position)
+// GameObject(const Eigen::Vector2d &position)
 //------------------------------------------------------------------------------
 /**
  * Constructs Game Object with starting position.
@@ -31,7 +31,7 @@
  * @param <position> initial position vector
  */
 //------------------------------------------------------------------------------
-GameObject::GameObject(Eigen::Vector2d position) :
+GameObject::GameObject(const Eigen::Vector2d &position) :
    position(position),
    velocity(0,0),
    active(true)
@@ -52,7 +52,7 @@ GameObject::~GameObject()
 }
 
 //------------------------------------------------------------------------------
-// void Update(GameState *gameState)
+// void Update(GameState * const gameState)
 //------------------------------------------------------------------------------
 /**
  * Updates Game Object based on the current game state.
@@ -60,7 +60,7 @@ GameObject::~GameObject()
  * @param <gameState> pointer to state of the game
  */
 //------------------------------------------------------------------------------
-void GameObject::Update(GameState *gameState)
+void GameObject::Update(GameState * const gameState)
 {
    newGameObjects.clear();
 

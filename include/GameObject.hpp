@@ -24,7 +24,7 @@
 class GameObject
 {
    public:
-   GameObject(Eigen::Vector2d position);
+   GameObject(const Eigen::Vector2d &position);
    //---------------------------------------------------------------------------
    // virtual ~GameObject()
    //---------------------------------------------------------------------------
@@ -35,7 +35,7 @@ class GameObject
    //---------------------------------------------------------------------------
    virtual ~GameObject() = 0;
 
-   virtual void Update(GameState *gameState);
+   virtual void Update(GameState * const gameState);
    std::vector<GameObject*> GetNewObjects();
    Eigen::Vector2d GetPosition();
    std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();

@@ -22,7 +22,8 @@
 class Asteroid : public GameObject
 {
    public:
-   Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity);
+   Asteroid(const Eigen::Vector2d &position,
+            const Eigen::Vector2d &velocity);
    ~Asteroid();
 
    private:

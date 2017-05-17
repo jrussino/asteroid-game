@@ -21,7 +21,7 @@
 //-------------------------------
 
 //------------------------------------------------------------------------------
-// Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity)
+// Asteroid(const Eigen::Vector2d &position, const Eigen::Vector2d &velocity)
 //------------------------------------------------------------------------------
 /**
  * Constructs Asteroid objects with initial position and velocity.
@@ -30,7 +30,8 @@
  * @param <velocity> initial velocity vector
  */
 //------------------------------------------------------------------------------
-Asteroid::Asteroid(Eigen::Vector2d position, Eigen::Vector2d velocity) :
+Asteroid::Asteroid(const Eigen::Vector2d &position, 
+                   const Eigen::Vector2d &velocity) :
    GameObject(position)
 {
    this->velocity = velocity;
