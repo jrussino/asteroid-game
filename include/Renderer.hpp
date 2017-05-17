@@ -33,8 +33,8 @@ class Renderer
    Renderer(const Renderer &renderer);
    Renderer & operator=(const Renderer &renderer);
 
-   int screenWidth;  // screen width (in pixels)
-   int screenHeight; // screen height (in pixels)
+   const int screenWidth;  // screen width (in pixels)
+   const int screenHeight; // screen height (in pixels)
 
    bool initialized; // True if window and renderer successfully created
    

@@ -36,7 +36,7 @@ class Bullet : public GameObject
    Bullet(const Bullet &bullet);
    Bullet & operator=(Bullet &bullet);
 
-   clock_t lifetime;  // lifetime duration in clock units
+   const clock_t lifetime;  // lifetime duration in clock units
    clock_t startTime; // start time in clock units
 };
 

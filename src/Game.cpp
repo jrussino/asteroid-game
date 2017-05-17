@@ -140,9 +140,9 @@ void Game::Run()
 
      clock_t  elapsedTime = clock() - loopStart;
      float elapsedTime_ms = (clock() - loopStart) * (1000.0/CLOCKS_PER_SEC);
-     if (elapsedTime_ms < 1000.0/state.fps)
+     if (elapsedTime_ms < 1000.0/state.GetFPS())
      {
-       SDL_Delay(static_cast<int>(1000.0/state.fps - elapsedTime_ms));
+       SDL_Delay(static_cast<int>(1000.0/state.GetFPS() - elapsedTime_ms));
      }
    } 
 }
