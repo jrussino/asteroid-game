@@ -31,6 +31,7 @@
 #include <Eigen/Geometry>
 
 #include "GameObject.hpp"
+#include "GameState.hpp"
 
 namespace asteroid_game {
 
@@ -43,7 +44,8 @@ class Bullet : public GameObject
    ~Bullet();
 
    void Update(GameState *const gameState);
-   void OnCollisionWith(GameObject::ColliderType colliderType);
+   void OnCollisionWith(GameObject::ColliderType colliderType,
+                        GameState *const gameState);
 
    private:
    Bullet();

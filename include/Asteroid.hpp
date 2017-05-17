@@ -29,6 +29,7 @@
 #include <Eigen/Geometry>
 
 #include "GameObject.hpp"
+#include "GameState.hpp"
 
 namespace asteroid_game {
 
@@ -39,7 +40,8 @@ class Asteroid : public GameObject
             const Eigen::Vector2d &velocity);
    ~Asteroid();
 
-   void OnCollisionWith(GameObject::ColliderType colliderType);
+   void OnCollisionWith(GameObject::ColliderType colliderType,
+                        GameState *const gameState);
 
    private:
    Asteroid(const Asteroid &asteroid);

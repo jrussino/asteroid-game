@@ -32,6 +32,7 @@
 
 #include "Controller.hpp"
 #include "GameObject.hpp"
+#include "GameState.hpp"
 
 namespace asteroid_game {
 
@@ -41,7 +42,8 @@ class Player : public GameObject
    Player(const Eigen::Vector2d &position, Controller *const controller);
    ~Player();
    void Update(GameState *const gameState);
-   void OnCollisionWith(GameObject::ColliderType colliderType);
+   void OnCollisionWith(GameObject::ColliderType colliderType,
+                        GameState *const gameState);
 
    void TurnLeft();
    void TurnRight();

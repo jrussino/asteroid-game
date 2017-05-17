@@ -40,9 +40,14 @@ class GameState
    int GetScreenWidth();
    int GetScreenHeight();
 
+   void IncreaseScore(int amount=1);
+   void DecreaseLives(int amount=1);
+
+   void Print();
+
+   bool isActive; // whether the game should continue
    int nLives;    // number of lives remaining
    int score;     // current score
-   bool isActive; // whether the game should continue
 
    private:
    GameState();
@@ -52,6 +57,7 @@ class GameState
    const int fps;          // frames per second - how frequently to render images
    const int screenWidth;  // screen width (in pixels)
    const int screenHeight; // screen height (in pixels)
+
 
 };
 

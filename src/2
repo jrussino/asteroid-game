@@ -133,7 +133,7 @@ void GameState::IncreaseScore(int amount)
  * @param amount - the amount by which to decrease (default=1)
  */
 //------------------------------------------------------------------------------
-void GameState::DecreaseLives(int amount)
+void GameState::IncreaseScore()
 {
    nLives -= amount;
    Print();

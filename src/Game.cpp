@@ -117,9 +117,8 @@ void Game::Run()
             if (collisions::CheckCollision(gameObjects[i],
                                            gameObjects[j]) == true)
             {
-               std::cout << clock() << "\tCOLLISION!" << std::endl;
-               gameObjects[i]->OnCollisionWith(gameObjects[j]->GetColliderType());
-               gameObjects[j]->OnCollisionWith(gameObjects[i]->GetColliderType());
+               gameObjects[i]->OnCollisionWith(gameObjects[j]->GetColliderType(), &state);
+               gameObjects[j]->OnCollisionWith(gameObjects[i]->GetColliderType(), &state);
             }
          }
       }

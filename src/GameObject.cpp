@@ -89,7 +89,7 @@ void GameObject::Update(GameState * const gameState)
 }
 
 //------------------------------------------------------------------------------
-// void OnCollisionWith(ColliderType colliderType)
+// void OnCollisionWith(ColliderType colliderType, GameState *const gameState)
 //------------------------------------------------------------------------------
 /**
  * Specifies what to do when in collision with a particular type of object
@@ -99,7 +99,8 @@ void GameObject::Update(GameState * const gameState)
  * @note default is to do nothing
  */
 //------------------------------------------------------------------------------
-void GameObject::OnCollisionWith(ColliderType colliderType)
+void GameObject::OnCollisionWith(ColliderType colliderType,
+                                 GameState *const gameState)
 {
 }
 

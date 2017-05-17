@@ -51,7 +51,8 @@ class GameObject
    virtual ~GameObject() = 0;
 
    virtual void Update(GameState * const gameState);
-   virtual void OnCollisionWith(ColliderType colliderType);
+   virtual void OnCollisionWith(ColliderType colliderType,
+                                GameState *const gameState);
 
    std::vector<GameObject*> GetNewObjects();
    Eigen::Vector2d GetPosition();
@@ -62,7 +63,6 @@ class GameObject
 
    protected:
    bool isActive;                           // whether or not this game object is active
-   GameState *gameState;                    // pointer to curent game state
    Eigen::Vector2d velocity;                // velocity (in pixels/second)
    std::vector<Eigen::Vector2d> polygon;    // polygon describing shape of the object
    std::vector<GameObject*> newGameObjects; // container for new objects instantiated by this one

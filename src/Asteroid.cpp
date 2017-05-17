@@ -27,6 +27,7 @@
 
 #include <Eigen/Geometry>
 
+#include <iostream>
 namespace asteroid_game {
 
 //-------------------------------
@@ -62,15 +63,18 @@ Asteroid::~Asteroid()
 }
 
 //------------------------------------------------------------------------------
-// void OnCollisionWith(GameObject::ColliderType colliderType)
+// void OnCollisionWith(GameObject::ColliderType colliderType,
+//                      GameState *const gameState)
 //------------------------------------------------------------------------------
 /**
  * Specifies what to do when in collision with a particular type of object
  *
  * @param <colliderType> type of object we've collided with
+ * @param <gameState> pointer to game state (in case we need to update it)
  */
 //------------------------------------------------------------------------------
-void Asteroid::OnCollisionWith(GameObject::ColliderType colliderType)
+void Asteroid::OnCollisionWith(GameObject::ColliderType colliderType,
+                               GameState *const gameState)
 {
    switch (colliderType)
    {
@@ -79,6 +83,7 @@ void Asteroid::OnCollisionWith(GameObject::ColliderType colliderType)
       
       case GameObject::ColliderType::BULLET:
       case GameObject::ColliderType::PLAYER:
+         gameState->IncreaseScore();  // Destroying an asteroid increases score
          isActive = false;
          break;
 

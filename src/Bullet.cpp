@@ -98,15 +98,18 @@ void Bullet::Update(GameState *const gameState)
 }
 
 //------------------------------------------------------------------------------
-// void OnCollisionWith(GameObject::ColliderType colliderType)
+// void OnCollisionWith(GameObject::ColliderType colliderType,
+//                      GameState *const gameState)
 //------------------------------------------------------------------------------
 /**
  * Specifies what to do when in collision with a particular type of object
  *
  * @param <colliderType> type of object we've collided with
+ * @param <gameState> pointer to game state (in case we need to update it)
  */
 //------------------------------------------------------------------------------
-void Bullet::OnCollisionWith(GameObject::ColliderType colliderType)
+void Bullet::OnCollisionWith(GameObject::ColliderType colliderType,
+                             GameState *const gameState)
 {
    switch (colliderType)
    {
