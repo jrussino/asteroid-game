@@ -30,6 +30,8 @@
 
 #include "GameObject.hpp"
 
+namespace asteroid_game {
+
 class Asteroid : public GameObject
 {
    public:
@@ -43,5 +45,7 @@ class Asteroid : public GameObject
    Asteroid();
 
 };
+
+} // namespace asteroid_game
 
 #endif // Asteroid_hpp

@@ -27,6 +27,8 @@
 
 #include <Eigen/Geometry>
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -58,3 +60,5 @@ Asteroid::Asteroid(const Eigen::Vector2d &position,
 Asteroid::~Asteroid()
 {
 }
+
+} // asteroid_game

@@ -31,6 +31,8 @@
 
 #include "Renderer.hpp"
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -194,3 +196,5 @@ bool Renderer::Initialize()
 
    return initialized;
 }
+
+} // namespace asteroid_game

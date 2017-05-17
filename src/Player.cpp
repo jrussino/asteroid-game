@@ -28,6 +28,8 @@
 #include "Player.hpp"
 #include "Bullet.hpp"
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -194,3 +196,5 @@ void Player::Fire()
       lastFireTime = now;
    }
 }
+
+} // namespace asteroid_game

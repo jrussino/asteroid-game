@@ -32,6 +32,8 @@
 #include "GameState.hpp"
 #include "Renderer.hpp"
 
+namespace asteroid_game {
+
 class Game
 {
    public:
@@ -51,5 +53,7 @@ class Game
    std::vector<GameObject*> gameObjects;
    
 };
+
+} // namespace asteroid_game
 
 #endif // Game_hpp

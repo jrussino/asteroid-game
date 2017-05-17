@@ -28,6 +28,8 @@
 
 #include <vector> // vector
 
+namespace asteroid_game {
+
 class GameState
 {
    public:
@@ -52,5 +54,7 @@ class GameState
    const int screenHeight; // screen height (in pixels)
 
 };
+
+} // namespace asteroid_game
 
 #endif // GAME_State_hpp

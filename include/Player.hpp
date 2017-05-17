@@ -33,6 +33,8 @@
 #include "Controller.hpp"
 #include "GameObject.hpp"
 
+namespace asteroid_game {
+
 class Player : public GameObject
 {
    public:
@@ -64,5 +66,7 @@ class Player : public GameObject
    std::vector<Eigen::Vector2d> defaultPolygon;
 
 };
+
+} // namespace asteroid_game
 
 #endif // Player_hpp

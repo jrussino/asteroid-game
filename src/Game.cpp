@@ -30,6 +30,8 @@
 #include <queue>    // queue
 #include <vector>   // vector
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -157,3 +159,5 @@ void Game::Run()
      }
    } 
 }
+
+} // namespace asteroid_game

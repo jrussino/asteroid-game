@@ -30,6 +30,8 @@
 
 #include <SDL2/SDL.h>
 
+namespace asteroid_game {
+
 class KeyboardController : public Controller
 {
    public:
@@ -43,5 +45,7 @@ class KeyboardController : public Controller
 
    SDL_Event event; // events from the SDL subsystem (used for keyboard events)
 };
+
+} // namesace asteroid_game
 
 #endif // KEYBOARD_Controller_hpp

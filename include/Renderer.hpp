@@ -29,6 +29,8 @@
 #include <SDL2/SDL.h>
 #include "GameObject.hpp"
 
+namespace asteroid_game {
+
 class Renderer
 {
    public:
@@ -52,5 +54,7 @@ class Renderer
    SDL_Window *sdlWindow = NULL;     // the window we'll be rendering to
    SDL_Renderer *sdlRenderer = NULL; // the renderer - renders images to the window
 };
+
+} // namespace asteroid_game
 
 #endif // Renderer_hpp

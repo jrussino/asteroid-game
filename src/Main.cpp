@@ -29,6 +29,8 @@
 #include "KeyboardController.hpp"
 #include "Player.hpp"
 
+using namespace asteroid_game;
+
 // Configurable stuff:
 unsigned int nAsteroids = 5;     // # of asteroids per round
 unsigned int nShips = 3;         // number of player ships (aka how many times we can be hit before game ends)

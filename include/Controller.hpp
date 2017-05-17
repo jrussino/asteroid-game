@@ -28,6 +28,8 @@
 
 #include <vector>
 
+namespace asteroid_game {
+
 class Controller
 {
    public:
@@ -52,5 +54,7 @@ class Controller
    Controller(const Controller &controller);
    Controller & operator=(const Controller &controller);
 };
+
+} // namespace asteroid_game
 
 #endif // Controller_hpp

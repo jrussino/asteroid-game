@@ -27,6 +27,8 @@
 
 #include <Eigen/Geometry>
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -94,3 +96,5 @@ void Bullet::Update(GameState *const gameState)
       active = false;
    }
 }
+
+} // namespace asteroid_game

@@ -25,6 +25,8 @@
 //------------------------------------------------------------------------------
 #include "Controller.hpp"
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -50,3 +52,5 @@ Controller::Controller()
 Controller::~Controller()
 {
 }
+
+} // namespace asteroid_game

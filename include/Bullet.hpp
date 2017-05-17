@@ -32,6 +32,8 @@
 
 #include "GameObject.hpp"
 
+namespace asteroid_game {
+
 class Bullet : public GameObject
 {
    public:
@@ -50,5 +52,7 @@ class Bullet : public GameObject
    const clock_t lifetime;  // lifetime duration in clock units
    clock_t startTime; // start time in clock units
 };
+
+} // namespace asteroid_game
 
 #endif // Bullet_hpp

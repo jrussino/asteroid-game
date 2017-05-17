@@ -25,6 +25,8 @@
 //------------------------------------------------------------------------------
 #include "GameState.hpp"
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -104,3 +106,5 @@ int GameState::GetScreenHeight()
 {
    return screenHeight;
 }
+
+} // namespace asteroid_game

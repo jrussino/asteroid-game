@@ -29,6 +29,8 @@
 
 #include <Eigen/Geometry>
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -162,3 +164,4 @@ double wrapValue(double value, double minVal, double maxVal)
    return fmod(tmpVal, range);
 }
 
+} // namespace asteroid_game

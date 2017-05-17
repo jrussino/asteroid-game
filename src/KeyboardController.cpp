@@ -25,6 +25,8 @@
 //------------------------------------------------------------------------------
 #include "KeyboardController.hpp"
 
+namespace asteroid_game {
+
 //-------------------------------
 // public methods
 //-------------------------------
@@ -102,3 +104,5 @@ std::vector<Controller::Command> KeyboardController::Update()
 
    return commands;
 } 
+
+} // namespace asteroid_game

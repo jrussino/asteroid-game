@@ -32,6 +32,8 @@
 
 #include "GameState.hpp"
 
+namespace asteroid_game {
+
 class GameObject
 {
    public:
@@ -72,5 +74,7 @@ class GameObject
 //-------------------------------
 
 double wrapValue(double value, double minVal, double maxVal);
+
+} // namespace asteroid_game
 
 #endif // Gameobject_hpp
