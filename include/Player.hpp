@@ -39,17 +39,18 @@ class Player : public GameObject
    Player(const Player &player);
    Player & operator=(const Player &player);
 
-   const double acceleration;          // acceleration (in pixels/s^2)
-   const double damping;               // damping coefficent - decreases velocity over time
-   const double vBullet;               // velocity for fired bullets (in pixels/second)
-   const clock_t fireRefresh;          // how long to wait between firing bullets (in clock units) // TODO change to ms
-   const clock_t bulletLifetime;       // how long bullets should persisit before disappearing (in clock units) // TODO change to ms
-   const Eigen::Vector2d forward;      // vector indicating the default forward direction
-   clock_t lastFireTime;               // last time a bullet was fired
-   Eigen::Rotation2D<double> vRot;     // rotation matrix describing rotation speed 
-   Eigen::Rotation2D<double> rotation; // rotation matrix describing current rotation
+   Controller *controller;               // controls player movement
+   const double acceleration;            // acceleration (in pixels/s^2)
+   const double damping;                 // damping coefficent - decreases velocity over time
+   const Eigen::Vector2d forward;        // vector indicating the default forward direction
+   const clock_t bulletLifetime;         // how long bullets should persisit before disappearing (in clock units) // TODO change to ms
+   const clock_t fireRefresh;            // how long to wait between firing bullets (in clock units) // TODO change to ms
+   const double vBullet;                 // velocity for fired bullets (in pixels/second)
+   const Eigen::Rotation2D<double> vRot; // rotation matrix describing rotation speed 
+
+   clock_t lastFireTime;                // last time a bullet was fired
+   Eigen::Rotation2D<double> rotation;  // rotation matrix describing current rotation
    std::vector<Eigen::Vector2d> defaultPolygon;
-   Controller *controller;             // controls player movement
 
 };
 

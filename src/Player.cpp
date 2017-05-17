@@ -37,13 +37,13 @@
 Player::Player(const Eigen::Vector2d &position, Controller *const controller) :
    GameObject(position),
    controller(controller),
-   forward(0.0,-1.0),
    acceleration(0.2),
    damping(0.995),
-   vRot(0.1),
-   vBullet(10.0),
-   fireRefresh(5000),
+   forward(0.0,-1.0),
    bulletLifetime(18000),
+   fireRefresh(5000),
+   vBullet(10.0),
+   vRot(0.1),
    rotation(0.0)
 {
    // Player ship is an arrowhead

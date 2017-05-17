@@ -20,7 +20,7 @@
 class GameState
 {
    public:
-   GameState(int nLive, int fps, int screenWidth, int screenHeight);
+   GameState(int nLives, int fps, int screenWidth, int screenHeight);
    ~GameState();
 
    int GetFPS();
