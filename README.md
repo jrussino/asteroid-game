@@ -15,6 +15,27 @@ packages to compile:
 * libeigen3-dev      (Eigen3, for linear algebra primitives and operations)
 
 
+# INCLUDED FILES
+* Asteroid.cpp/.hpp - Asteroid (implementation of GameObject). Increases score
+  on collision with Bullet or Player.
+* Bullet.cpp/.hpp - Bullet (implementation of GameObject). Instantiated by
+  Player upon firing.
+* Controller.cpp/.hpp - Abstract base class for things that control the Player.
+* Collisions.cpp/.hpp - Namespace containing methods related to collision
+  detection.
+* GameObject.cpp/.hpp - Abstract base class for objects in the game.
+* GameState.cpp/.hpp - Stores and controls access to game configuration and 
+  state data.
+* KeyboardController.cpp/.hpp - Controller implementation that uses keyboard
+  input to control the player object.
+* Main.cpp - Main procedure. Sets up and runs the game.
+* Player.cpp/.hpp - Player (implementation of GameObject). Moves and fires in
+  accordance with commands from a Controller. Decrements lives on collision with
+  Asteroid.
+* Renderer.cpp/.hpp - Graphics renderer. Creates game window and draws
+  GameObjects every frame.
+
+
 # ADDITIONAL NOTES
 This project follows this NASA C++ coding standard and style guide:
 https://ntrs.nasa.gov/search.jsp?R=20080039927
