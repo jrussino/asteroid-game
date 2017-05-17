@@ -12,14 +12,17 @@
  * Creates game window and renders graphical representations of game objects
  */
 //------------------------------------------------------------------------------
-#include "Renderer.hpp"
-
 #include <iostream> // cerr
 
 #include <Eigen/Geometry>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 
+#include "Renderer.hpp"
+
+//-------------------------------
+// public methods
+//-------------------------------
 
 //------------------------------------------------------------------------------
 // Renderer(int screenWidth, int screenHeight)

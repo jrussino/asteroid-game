@@ -56,4 +56,10 @@ class GameObject
    Eigen::Vector2d position; // position on screen (in pixels)
 };
 
+//-------------------------------
+// global declarations
+//-------------------------------
+
+double wrapValue(double value, double minVal, double maxVal);
+
 #endif // Gameobject_hpp

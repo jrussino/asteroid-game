@@ -12,11 +12,14 @@
  * Player-type game object
  */
 //------------------------------------------------------------------------------
-#include "Player.hpp"
-
 #include <Eigen/Geometry>
 
+#include "Player.hpp"
 #include "Bullet.hpp"
+
+//-------------------------------
+// public methods
+//-------------------------------
 
 //------------------------------------------------------------------------------
 // Player(Eigen::Vector2d position, Controller *controller)
