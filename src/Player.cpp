@@ -50,6 +50,7 @@ namespace asteroid_game {
 Player::Player(const Eigen::Vector2d &position, Controller *const controller) :
    GameObject(position, GameObject::ColliderType::PLAYER),
    controller(controller),
+   startPos(position),
    acceleration(0.2),
    damping(0.995),
    forward(0.0,-1.0),
@@ -149,6 +150,7 @@ void Player::OnCollisionWith(GameObject::ColliderType colliderType,
       case GameObject::ColliderType::ASTEROID:
          gameState->DecreaseLives(); // Colliding with asteroid removes a life
          isActive = false;
+         newGameObjects.push_back(new Player(startPos, controller));
          break;
       
       case GameObject::ColliderType::BULLET:

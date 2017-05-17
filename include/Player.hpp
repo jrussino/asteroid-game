@@ -56,6 +56,7 @@ class Player : public GameObject
    Player & operator=(const Player &player);
 
    Controller *controller;               // controls player movement
+   const Eigen::Vector2d startPos;       // starting position, for instantiating new player objects
    const double acceleration;            // acceleration (in pixels/s^2)
    const double damping;                 // damping coefficent - decreases velocity over time
    const Eigen::Vector2d forward;        // vector indicating the default forward direction

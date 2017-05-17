@@ -103,11 +103,17 @@ void Game::Run()
    }
 
    // Run until no more lives left
-   std::queue<GameObject*> toAddQueue;
-   std::queue<GameObject*> toRemoveQueue;
    while ( (state.nLives > 0) && (state.isActive == true) )
    {
       clock_t loopStart = clock();
+
+      // Update all game objects
+      for (std::vector<GameObject*>::iterator gameObject = gameObjects.begin();
+           gameObject != gameObjects.end();
+           ++gameObject)
+      {
+         (*gameObject)->Update(&state);
+      }
 
       // Check for collisions
       for (int i = 0; i < gameObjects.size()-1; ++i)
@@ -122,15 +128,14 @@ void Game::Run()
             }
          }
       }
-
-      //Update positions of all game objects and redraw
-      std::vector<GameObject*> newObjects;
-      renderer.Clear();
+      
+      // Compile lists of new objects to add and deactivated objects to remove
+      std::queue<GameObject*> toAddQueue;
+      std::queue<GameObject*> toRemoveQueue;
       for (std::vector<GameObject*>::iterator gameObject = gameObjects.begin();
            gameObject != gameObjects.end();
            ++gameObject)
       {
-         (*gameObject)->Update(&state);
          std::vector<GameObject*> newObjects = (*gameObject)->GetNewObjects();
          for (std::vector<GameObject*>::iterator newObject = newObjects.begin();
             newObject != newObjects.end(); ++newObject)
@@ -141,15 +146,9 @@ void Game::Run()
          {
             toRemoveQueue.push(*gameObject);
          }
-         else
-         {
-            renderer.DrawObject(*gameObject);
-         }
       }
-      
-      renderer.Render();
 
-      // Remove inactive objects
+      // Remove deactivated objects
       while (toRemoveQueue.size() > 0)
       {
          auto it = std::find(gameObjects.begin(), 
@@ -157,23 +156,36 @@ void Game::Run()
                              toRemoveQueue.front()); 
          if (it != gameObjects.end())
          {
+            delete *it;
             gameObjects.erase(it); 
          }
          toRemoveQueue.pop();
       }
-      // Add new objects
+
+      // Add newly-instantiated objects
       while (toAddQueue.size() > 0)
       {
          gameObjects.push_back(toAddQueue.front());
          toAddQueue.pop();
       }
 
+      // Wait to draw next frame
       clock_t  elapsedTime = clock() - loopStart;
       float elapsedTime_ms = (clock() - loopStart) * (1000.0/CLOCKS_PER_SEC);
       if (elapsedTime_ms < 1000.0/state.GetFPS())
       {
          SDL_Delay(static_cast<int>(1000.0/state.GetFPS() - elapsedTime_ms));
       }
+
+      // Clear screen and draw each currently-active object
+      renderer.Clear();
+      for (std::vector<GameObject*>::iterator gameObject = gameObjects.begin();
+           gameObject != gameObjects.end();
+           ++gameObject)
+      {
+         renderer.DrawObject(*gameObject);
+      }
+      renderer.Render();
    } 
 }
 
