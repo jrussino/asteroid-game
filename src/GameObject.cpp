@@ -14,7 +14,7 @@
 //------------------------------------------------------------------------------
 #include "GameObject.hpp"
 
-#include <math.h>
+#include <cmath>
 
 #include <Eigen/Geometry>
 
