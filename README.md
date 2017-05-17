@@ -8,7 +8,7 @@ the command line to play.
 
 
 # REQUIREMENTS
-This module has been tested under Ubuntu 16.04. It requires the following
+This software has been tested under Ubuntu 16.04. It requires the following
 packages to compile:
 * libsdl2-dev        (SDL2, for basic graphics)
 * libsdl2-gfx-dev    (SDL2-gfx, for geometric primitives) 
@@ -45,4 +45,5 @@ https://ntrs.nasa.gov/search.jsp?R=20080039927
 Joseph A. Russino
 
 # LICENSE
+GNU General Public License v3.0
 (see LICENSE file)
