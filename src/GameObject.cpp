@@ -47,7 +47,8 @@ namespace asteroid_game {
 GameObject::GameObject(const Eigen::Vector2d &position) :
    position(position),
    velocity(0,0),
-   active(true)
+   active(true),
+   boundingCircleRadius(-1) // set to a negative value to signal uninitialized
 {
    // Default polygon = octagon of radius 10
    double radius = 10;
@@ -151,6 +152,30 @@ std::vector<GameObject*> GameObject::GetNewObjects()
 bool GameObject::IsActive()
 {
    return active;
+}
+
+//------------------------------------------------------------------------------
+// double GetBoundingCircleRadius()
+//------------------------------------------------------------------------------
+/**
+ * Returns the radius of the bounding circle for this object's polygon
+ *
+ * @return double boundingCircleRadius
+ */
+//------------------------------------------------------------------------------
+double GameObject::GetBoundingCircleRadius()
+{
+   // Calculate once and store
+   if (boundingCircleRadius < 0)
+   {
+      // Finds max-length vector in the polygon (since its points are
+      // represented as a set of Eigen::Vector2d centered around the origin)
+      auto maxVector = std::max_element(polygon.begin(), 
+                                        polygon.end(), 
+                                        [](Eigen::Vector2d lhs, Eigen::Vector2d rhs){return rhs.norm() > lhs.norm();});
+      boundingCircleRadius = (*maxVector).norm();
+   }
+   return boundingCircleRadius;
 }
 
 //-------------------------------

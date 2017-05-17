@@ -53,6 +53,7 @@ class GameObject
    Eigen::Vector2d GetPosition();
    std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
    bool IsActive();
+   double GetBoundingCircleRadius();
 
    protected:
    bool active;                             // whether or not this game object is active
@@ -66,7 +67,8 @@ class GameObject
    GameObject(const GameObject &gameObject);
    GameObject & operator=(const GameObject &gameObject);
 
-   Eigen::Vector2d position; // position on screen (in pixels)
+   Eigen::Vector2d position;    // position on screen (in pixels)
+   double boundingCircleRadius; // radius of the bounding circle for the object's polygon
 };
 
 //-------------------------------
