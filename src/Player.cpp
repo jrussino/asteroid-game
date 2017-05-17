@@ -180,9 +180,6 @@ void Player::Thrust()
 /**
  * Instantiates a new bullet object at player's location and adds it to the list
  * of game objects.
- *
- * @note bullet velocity will be (player velocity + (player direction * bullet 
- * speed))
  */
 //------------------------------------------------------------------------------
 void Player::Fire()
@@ -190,9 +187,15 @@ void Player::Fire()
    clock_t now = clock();
    if (now - lastFireTime > fireRefresh)
    {
-      newGameObjects.push_back(new Bullet(GetPosition(), 
-                         velocity + vBullet * (rotation * forward),
-                         bulletLifetime));
+      // Position bullet slightly in front of the player's polygon
+      Eigen::Vector2d bulletPosition = GetPosition() 
+                                       + (rotation * forward) 
+                                         * (1.2 * GetBoundingCircleRadius());
+      // Velocity is added to player's, in the forward-facing direction
+      Eigen::Vector2d bulletVelocity = velocity + vBullet * (rotation* forward);
+      newGameObjects.push_back(new Bullet(bulletPosition, 
+                                          bulletVelocity,
+                                          bulletLifetime));
       lastFireTime = now;
    }
 }
