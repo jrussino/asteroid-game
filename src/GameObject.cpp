@@ -36,7 +36,7 @@ namespace asteroid_game {
 //-------------------------------
 
 //------------------------------------------------------------------------------
-// GameObject(const Eigen::Vector2d &position)
+// GameObject(const Eigen::Vector2d &position, ColliderType colliderType)
 //------------------------------------------------------------------------------
 /**
  * Constructs Game Object with starting position.
@@ -44,10 +44,12 @@ namespace asteroid_game {
  * @param <position> initial position vector
  */
 //------------------------------------------------------------------------------
-GameObject::GameObject(const Eigen::Vector2d &position) :
+GameObject::GameObject(const Eigen::Vector2d &position,
+                       ColliderType colliderType) :
    position(position),
+   colliderType(colliderType),
    velocity(0,0),
-   active(true),
+   isActive(true),
    boundingCircleRadius(-1) // set to a negative value to signal uninitialized
 {
    // Default polygon = octagon of radius 10
@@ -84,6 +86,21 @@ void GameObject::Update(GameState * const gameState)
    position(1) = wrapValue(position(1) + velocity(1),
                      0,
                      gameState->GetScreenHeight());
+}
+
+//------------------------------------------------------------------------------
+// void OnCollisionWith(ColliderType colliderType)
+//------------------------------------------------------------------------------
+/**
+ * Specifies what to do when in collision with a particular type of object
+ *
+ * @param <colliderType> type of object we've collided with
+ *
+ * @note default is to do nothing
+ */
+//------------------------------------------------------------------------------
+void GameObject::OnCollisionWith(ColliderType colliderType)
+{
 }
 
 //------------------------------------------------------------------------------
@@ -151,7 +168,7 @@ std::vector<GameObject*> GameObject::GetNewObjects()
 //------------------------------------------------------------------------------
 bool GameObject::IsActive()
 {
-   return active;
+   return isActive;
 }
 
 //------------------------------------------------------------------------------
@@ -176,6 +193,20 @@ double GameObject::GetBoundingCircleRadius()
       boundingCircleRadius = (*maxVector).norm();
    }
    return boundingCircleRadius;
+}
+
+//------------------------------------------------------------------------------
+// ColliderType GetColliderType()
+//------------------------------------------------------------------------------
+/**
+ * Returns the collider type for this object
+ *
+ * @return ColliderType colliderType
+ */
+//------------------------------------------------------------------------------
+GameObject::ColliderType GameObject::GetColliderType()
+{
+   return colliderType;
 }
 
 //-------------------------------

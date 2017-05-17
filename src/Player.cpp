@@ -48,7 +48,7 @@ namespace asteroid_game {
  */
 //------------------------------------------------------------------------------
 Player::Player(const Eigen::Vector2d &position, Controller *const controller) :
-   GameObject(position),
+   GameObject(position, GameObject::ColliderType::PLAYER),
    controller(controller),
    acceleration(0.2),
    damping(0.995),
@@ -102,31 +102,57 @@ void Player::Update(GameState *const gameState)
       switch(*command)
       {
          case Controller::Command::TURN_LEFT :
-         TurnLeft();
-         break;
+            TurnLeft();
+            break;
 
          case Controller::Command::TURN_RIGHT :
-         TurnRight();
-         break;
+            TurnRight();
+            break;
 
          case Controller::Command::THRUST :
-         Thrust();
-         break;
+            Thrust();
+            break;
 
          case Controller::Command::FIRE :
-         Fire();
-         break;
+            Fire();
+            break;
 
          case Controller::Command::QUIT :
-         gameState->isActive = false;
-         break;
+            gameState->isActive = false;
+            break;
 
          default:
-         // This should never happen
-         printf("WARNING - Controller recieved an unknown command: %d",
-               *command);
-         break;
+            // This should never happen
+            printf("WARNING - Controller recieved an unknown command: %d",
+                  *command);
+            break;
       }
+   }
+}
+
+//------------------------------------------------------------------------------
+// void OnCollisionWith(GameObject::ColliderType colliderType)
+//------------------------------------------------------------------------------
+/**
+ * Specifies what to do when in collision with a particular type of object
+ *
+ * @param <colliderType> type of object we've collided with
+ */
+//------------------------------------------------------------------------------
+void Player::OnCollisionWith(GameObject::ColliderType colliderType)
+{
+   switch (colliderType)
+   {
+      case GameObject::ColliderType::ASTEROID:
+         isActive = false;
+         break;
+      
+      case GameObject::ColliderType::BULLET:
+      case GameObject::ColliderType::PLAYER:
+         break;
+
+      default:
+         break;
    }
 }
 

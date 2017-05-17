@@ -39,6 +39,8 @@ class Asteroid : public GameObject
             const Eigen::Vector2d &velocity);
    ~Asteroid();
 
+   void OnCollisionWith(GameObject::ColliderType colliderType);
+
    private:
    Asteroid(const Asteroid &asteroid);
    Asteroid & operator=(const Asteroid &asteroid);

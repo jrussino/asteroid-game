@@ -43,6 +43,7 @@ class Bullet : public GameObject
    ~Bullet();
 
    void Update(GameState *const gameState);
+   void OnCollisionWith(GameObject::ColliderType colliderType);
 
    private:
    Bullet();

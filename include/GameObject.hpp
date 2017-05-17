@@ -37,7 +37,9 @@ namespace asteroid_game {
 class GameObject
 {
    public:
-   GameObject(const Eigen::Vector2d &position);
+   enum ColliderType {NONE, ASTEROID, BULLET, PLAYER}; // Type for determining collision effects
+   GameObject(const Eigen::Vector2d &position,
+              ColliderType colliderType=ColliderType::NONE);
    //---------------------------------------------------------------------------
    // virtual ~GameObject()
    //---------------------------------------------------------------------------
@@ -49,18 +51,22 @@ class GameObject
    virtual ~GameObject() = 0;
 
    virtual void Update(GameState * const gameState);
+   virtual void OnCollisionWith(ColliderType colliderType);
+
    std::vector<GameObject*> GetNewObjects();
    Eigen::Vector2d GetPosition();
    std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
    bool IsActive();
    double GetBoundingCircleRadius();
+   ColliderType GetColliderType();
 
    protected:
-   bool active;                             // whether or not this game object is active
+   bool isActive;                           // whether or not this game object is active
    GameState *gameState;                    // pointer to curent game state
    Eigen::Vector2d velocity;                // velocity (in pixels/second)
    std::vector<Eigen::Vector2d> polygon;    // polygon describing shape of the object
    std::vector<GameObject*> newGameObjects; // container for new objects instantiated by this one
+   const ColliderType colliderType;         // classification for the purpose of collision-checking
 
    private:
    GameObject();

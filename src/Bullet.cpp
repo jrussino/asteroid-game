@@ -49,7 +49,7 @@ namespace asteroid_game {
 Bullet::Bullet(const Eigen::Vector2d &position, 
                const Eigen::Vector2d &velocity, 
                clock_t lifetime) :
-   GameObject(position),
+   GameObject(position, GameObject::ColliderType::BULLET),
    lifetime(lifetime)
 {
    this->velocity = velocity;
@@ -93,7 +93,33 @@ void Bullet::Update(GameState *const gameState)
    GameObject::Update(gameState);
    if (clock() - startTime > lifetime)
    {
-      active = false;
+      isActive = false;
+   }
+}
+
+//------------------------------------------------------------------------------
+// void OnCollisionWith(GameObject::ColliderType colliderType)
+//------------------------------------------------------------------------------
+/**
+ * Specifies what to do when in collision with a particular type of object
+ *
+ * @param <colliderType> type of object we've collided with
+ */
+//------------------------------------------------------------------------------
+void Bullet::OnCollisionWith(GameObject::ColliderType colliderType)
+{
+   switch (colliderType)
+   {
+      case GameObject::ColliderType::BULLET:
+      case GameObject::ColliderType::PLAYER:
+         break;
+      
+      case GameObject::ColliderType::ASTEROID:
+         isActive = false;
+         break;
+
+      default:
+         break;
    }
 }
 

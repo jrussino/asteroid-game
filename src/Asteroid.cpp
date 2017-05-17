@@ -45,7 +45,7 @@ namespace asteroid_game {
 //------------------------------------------------------------------------------
 Asteroid::Asteroid(const Eigen::Vector2d &position, 
                    const Eigen::Vector2d &velocity) :
-   GameObject(position)
+   GameObject(position, GameObject::ColliderType::ASTEROID)
 {
    this->velocity = velocity;
 }
@@ -59,6 +59,32 @@ Asteroid::Asteroid(const Eigen::Vector2d &position,
 //------------------------------------------------------------------------------
 Asteroid::~Asteroid()
 {
+}
+
+//------------------------------------------------------------------------------
+// void OnCollisionWith(GameObject::ColliderType colliderType)
+//------------------------------------------------------------------------------
+/**
+ * Specifies what to do when in collision with a particular type of object
+ *
+ * @param <colliderType> type of object we've collided with
+ */
+//------------------------------------------------------------------------------
+void Asteroid::OnCollisionWith(GameObject::ColliderType colliderType)
+{
+   switch (colliderType)
+   {
+      case GameObject::ColliderType::ASTEROID:
+         break;
+      
+      case GameObject::ColliderType::BULLET:
+      case GameObject::ColliderType::PLAYER:
+         isActive = false;
+         break;
+
+      default:
+         break;
+   }
 }
 
 } // asteroid_game

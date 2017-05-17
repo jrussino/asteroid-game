@@ -31,8 +31,6 @@
 namespace asteroid_game {
 namespace collisions {
 
-enum ColliderType {ASTEROID, FRIENDLY_BULLET, PLAYER}; // Type for determining collision effects
-
 bool CheckCollision(GameObject *const gameObjectA,
                     GameObject *const gameObjectB);
 
