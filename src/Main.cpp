@@ -1,6 +1,5 @@
-#include <random>
-#include <stdio.h>
-#include <vector>
+#include <iostream> // cerr
+#include <random>  // uniform_real_distribution, default_random_engine
 
 #include <Eigen/Geometry>
 

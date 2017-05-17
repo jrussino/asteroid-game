@@ -15,7 +15,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include <vector>
+#include <vector> // vector
 
 #include <Eigen/Geometry>
 

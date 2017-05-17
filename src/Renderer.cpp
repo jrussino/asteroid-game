@@ -14,7 +14,7 @@
 //------------------------------------------------------------------------------
 #include "Renderer.hpp"
 
-#include <iostream>
+#include <iostream> // cerr
 
 #include <Eigen/Geometry>
 #include <SDL2/SDL.h>

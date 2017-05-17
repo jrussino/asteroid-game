@@ -15,8 +15,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <time.h>
-#include <vector>
+#include <ctime> // clock_t
 
 #include <Eigen/Geometry>
 

@@ -15,8 +15,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include <time.h>
-#include <vector>
+#include <ctime> // clock_t
 
 #include <Eigen/Geometry>
 

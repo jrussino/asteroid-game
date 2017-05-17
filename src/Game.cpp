@@ -14,9 +14,10 @@
 //------------------------------------------------------------------------------
 #include "Game.hpp"
 
-#include <ctime>
-#include <queue>
-#include <iostream>
+#include <ctime>    // clock_t, clock()
+#include <iostream> // cerr
+#include <queue>    // queue
+#include <vector>   // vector
 
 
 //------------------------------------------------------------------------------

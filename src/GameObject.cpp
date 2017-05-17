@@ -14,7 +14,7 @@
 //------------------------------------------------------------------------------
 #include "GameObject.hpp"
 
-#include <cmath>
+#include <cmath> // sin, cos
 
 #include <Eigen/Geometry>
 
