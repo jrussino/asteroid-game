@@ -12,8 +12,8 @@
  * Base class for objects that control the player object
  */
 //------------------------------------------------------------------------------
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
+#ifndef Controller_hpp
+#define Controller_hpp
 
 #include <vector>
 
@@ -42,4 +42,4 @@ class Controller
    Controller & operator=(const Controller &controller);
 };
 
-#endif // CONTROLLER_H
+#endif // Controller_hpp

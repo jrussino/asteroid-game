@@ -12,8 +12,8 @@
  * Bullet-type game object
  */
 //------------------------------------------------------------------------------
-#ifndef BULLET_H
-#define BULLET_H
+#ifndef Bullet_hpp
+#define Bullet_hpp
 
 #include <ctime> // clock_t
 
@@ -38,4 +38,4 @@ class Bullet : public GameObject
    clock_t startTime; // start time in clock units
 };
 
-#endif // BULLET_H
+#endif // Bullet_hpp

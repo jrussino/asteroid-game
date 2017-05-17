@@ -12,8 +12,8 @@
  * Handles game execution.
  */
 //------------------------------------------------------------------------------
-#ifndef GAME_H
-#define GAME_H
+#ifndef Game_hpp
+#define Game_hpp
 
 #include <vector>
 
@@ -41,4 +41,4 @@ class Game
    
 };
 
-#endif // GAME_H
+#endif // Game_hpp

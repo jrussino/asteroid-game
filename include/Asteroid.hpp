@@ -12,8 +12,8 @@
  * Asteroid-type game object
  */
 //------------------------------------------------------------------------------
-#ifndef ASTEROID_H
-#define ASTEROID_H
+#ifndef Asteroid_hpp
+#define Asteroid_hpp
 
 #include <Eigen/Geometry>
 
@@ -32,4 +32,4 @@ class Asteroid : public GameObject
 
 };
 
-#endif // ASTEROID_H
+#endif // Asteroid_hpp

@@ -12,8 +12,8 @@
  * Player-type game object
  */
 //------------------------------------------------------------------------------
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef Player_hpp
+#define Player_hpp
 
 #include <ctime> // clock_t
 
@@ -53,4 +53,4 @@ class Player : public GameObject
 
 };
 
-#endif // PLAYER_H
+#endif // Player_hpp

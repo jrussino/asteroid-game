@@ -12,8 +12,8 @@
  * Controls player object via keyboard input
  */
 //------------------------------------------------------------------------------
-#ifndef KEYBOARD_CONTROLLER_H
-#define KEYBOARD_CONTROLLER_H
+#ifndef KEYBOARD_Controller_hpp
+#define KEYBOARD_Controller_hpp
 
 #include "Controller.hpp"
 
@@ -32,4 +32,5 @@ class KeyboardController : public Controller
 
    SDL_Event event; // events from the SDL subsystem (used for keyboard events)
 };
-#endif // KEYBOARD_CONTROLLER_H
+
+#endif // KEYBOARD_Controller_hpp

@@ -12,8 +12,8 @@
  * Provides game configuration and state information
  */
 //------------------------------------------------------------------------------
-#ifndef GAME_STATE_H
-#define GAME_STATE_H
+#ifndef GAME_State_hpp
+#define GAME_State_hpp
 
 #include <vector> // vector
 
@@ -40,4 +40,4 @@ class GameState
    GameState & operator=(const GameState &gameState);
 };
 
-#endif // GAME_STATE_H
+#endif // GAME_State_hpp

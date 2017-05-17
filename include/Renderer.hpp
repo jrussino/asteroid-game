@@ -12,8 +12,8 @@
  * Creates game window and renders graphical representations of game objects
  */
 //------------------------------------------------------------------------------
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef Renderer_hpp
+#define Renderer_hpp
 
 #include <SDL2/SDL.h>
 #include "GameObject.hpp"
@@ -42,4 +42,4 @@ class Renderer
    SDL_Renderer *sdlRenderer = NULL; // the renderer - renders images to the window
 };
 
-#endif // RENDERER_H
+#endif // Renderer_hpp

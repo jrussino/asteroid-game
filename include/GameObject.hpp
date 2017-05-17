@@ -12,8 +12,8 @@
  * Base class for game objects
  */
 //------------------------------------------------------------------------------
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#ifndef Gameobject_hpp
+#define Gameobject_hpp
 
 #include <vector> // vector
 
@@ -56,4 +56,4 @@ class GameObject
    Eigen::Vector2d position; // position on screen (in pixels)
 };
 
-#endif // GAMEOBJECT_H
+#endif // Gameobject_hpp
