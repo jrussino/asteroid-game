@@ -33,7 +33,7 @@
 
 using namespace asteroid_game;
 
-// Configurable stuff:
+//TODO Configuration; belongs in a config file
 unsigned int nAsteroids = 5;     // # of asteroids per round
 unsigned int nLives = 3;         // number of player ships (aka how many times we can be hit before game ends)
 unsigned int screenWidth = 640;  // width of game area (in pixels)
@@ -54,6 +54,7 @@ int main( int argc, char *argv[] )
    std::uniform_real_distribution<double> randomY(0, screenHeight);
    std::uniform_real_distribution<double> randomV(-vMax, vMax);
    std::default_random_engine re;
+   re.seed(clock());
 
    // Instantiate ship at center of screen
    KeyboardController *controller = new KeyboardController();
