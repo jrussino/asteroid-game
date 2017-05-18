@@ -34,6 +34,20 @@
 
 namespace asteroid_game {
 
+typedef struct Edge {
+   Eigen::Vector2d start;
+   Eigen::Vector2d end;
+
+   Edge(const Eigen::Vector2d &start, const Eigen::Vector2d &end)
+   {
+      this->start = start;
+      this->end = end;
+   };
+
+} Edge;
+
+typedef std::vector<Edge> Polygon;
+
 class GameObject
 {
    public:
@@ -56,15 +70,18 @@ class GameObject
 
    std::vector<GameObject*> GetNewObjects();
    Eigen::Vector2d GetPosition();
-   std::pair<std::vector<short int>, std::vector<short int> > GetPolygon();
+   std::pair<std::vector<short int>,
+             std::vector<short int> > GetPolygonVertices();
    bool IsActive();
    double GetBoundingCircleRadius();
    ColliderType GetColliderType();
 
    protected:
+   void SetPolygon(const std::vector<Eigen::Vector2d> &vertices);
+
    bool isActive;                           // whether or not this game object is active
    Eigen::Vector2d velocity;                // velocity (in pixels/second)
-   std::vector<Eigen::Vector2d> polygon;    // polygon describing shape of the object
+   Polygon polygon;                         // polygon describing shape of the object
    std::vector<GameObject*> newGameObjects; // container for new objects instantiated by this one
    const ColliderType colliderType;         // classification for the purpose of collision-checking
 

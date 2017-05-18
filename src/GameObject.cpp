@@ -55,12 +55,14 @@ GameObject::GameObject(const Eigen::Vector2d &position,
    // Default polygon = octagon of radius 10
    double radius = 10;
    int nVertices = 8;
+   std::vector<Eigen::Vector2d> vertices;
    for (int i = 0; i < nVertices; ++i)
    {
       double x = radius*sin(i*2*M_PI/nVertices);
       double y = radius*cos(i*2*M_PI/nVertices);
-      polygon.push_back(Eigen::Vector2d(x, y));
+      vertices.push_back(Eigen::Vector2d(x, y));
    }
+   SetPolygon(vertices);
 }
 
 GameObject::~GameObject()
@@ -119,32 +121,6 @@ Eigen::Vector2d GameObject::GetPosition()
 }
 
 //------------------------------------------------------------------------------
-// std::pair<std::vector<short int>, std::vector<short int> > GetPolygon()
-//------------------------------------------------------------------------------
-/**
- * Gets the object polygon.
- *
- * @return std::pair<std::vector<short int>, std::vector<short int> > polygon
- */
-//------------------------------------------------------------------------------
-std::pair<std::vector<short int>, 
-        std::vector<short int> > GameObject::GetPolygon()
-{
-   std::vector<short int> vertsX; 
-   std::vector<short int> vertsY; 
-   for (std::vector<Eigen::Vector2d>::iterator vertex = polygon.begin();
-       vertex != polygon.end();
-       ++vertex)
-   {
-      vertsX.push_back(static_cast<short int>((*vertex)(0) + position(0)));
-      vertsY.push_back(static_cast<short int>((*vertex)(1) + position(1)));
-   }
-
-   return std::pair<std::vector<short int>,
-                std::vector<short int> >(vertsX, vertsY);
-}
-
-//------------------------------------------------------------------------------
 // std::vector<GameObject*> GetNewObjects()
 //------------------------------------------------------------------------------
 /**
@@ -188,10 +164,10 @@ double GameObject::GetBoundingCircleRadius()
    {
       // Finds max-length vector in the polygon (since its points are
       // represented as a set of Eigen::Vector2d centered around the origin)
-      auto maxVector = std::max_element(polygon.begin(), 
-                                        polygon.end(), 
-                                        [](Eigen::Vector2d lhs, Eigen::Vector2d rhs){return rhs.norm() > lhs.norm();});
-      boundingCircleRadius = (*maxVector).norm();
+      auto maxEdge = std::max_element(polygon.begin(), 
+                                      polygon.end(), 
+                                      [](Edge lhs, Edge rhs){return rhs.start.norm() > lhs.start.norm();});
+      boundingCircleRadius = (*maxEdge).start.norm();
    }
    return boundingCircleRadius;
 }
@@ -208,6 +184,47 @@ double GameObject::GetBoundingCircleRadius()
 GameObject::ColliderType GameObject::GetColliderType()
 {
    return colliderType;
+}
+
+
+//------------------------------------------------------------------------------
+// SetPolygon(const std::vector<Eigen::Vector2d> &vertices)
+//------------------------------------------------------------------------------
+/**
+ * Sets the polygon vertices from a list of points
+ *
+ * @param <vertices> ordered list of the polygon's vertices
+ */
+//------------------------------------------------------------------------------
+void GameObject::SetPolygon(const std::vector<Eigen::Vector2d> &vertices)
+{
+   polygon.clear();
+   // Create edges from two consecutive points, wrapping back to first point at
+   // the end
+   for(int i = 0; i < vertices.size(); ++i)
+   {
+      polygon.push_back(Edge(vertices[i], vertices[(i+1) % vertices.size()]));   
+   }
+}
+
+
+std::pair<std::vector<short int>, 
+          std::vector<short int> > GameObject::GetPolygonVertices()
+{
+   std::vector<short int> vertsX; 
+   std::vector<short int> vertsY; 
+
+   Polygon::const_iterator edge = polygon.begin();
+   vertsX.push_back(static_cast<short int>((*edge).start(0) + position(0)));
+   vertsY.push_back(static_cast<short int>((*edge).start(1) + position(1)));
+   for (; edge != polygon.end(); ++edge)
+   {
+      vertsX.push_back(static_cast<short int>((*edge).end(0) + position(0)));
+      vertsY.push_back(static_cast<short int>((*edge).end(1) + position(1)));
+   }
+
+   return std::pair<std::vector<short int>,
+                std::vector<short int> >(vertsX, vertsY);
 }
 
 //-------------------------------

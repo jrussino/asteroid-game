@@ -67,7 +67,7 @@ class Player : public GameObject
 
    clock_t lastFireTime;                // last time a bullet was fired
    Eigen::Rotation2D<double> rotation;  // rotation matrix describing current rotation
-   std::vector<Eigen::Vector2d> defaultPolygon;
+   Polygon defaultPolygon;
 
 };
 

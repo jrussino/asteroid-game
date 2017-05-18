@@ -61,11 +61,12 @@ Player::Player(const Eigen::Vector2d &position, Controller *const controller) :
    rotation(0.0)
 {
    // Player ship is an arrowhead
-   polygon.clear();
-   polygon.push_back(Eigen::Vector2d(0.0, -10.0));
-   polygon.push_back(Eigen::Vector2d(-5.0, 5.0));
-   polygon.push_back(Eigen::Vector2d(0.0, 4.0));
-   polygon.push_back(Eigen::Vector2d(5.0, 5.0));
+   std::vector<Eigen::Vector2d> vertices;
+   vertices.push_back(Eigen::Vector2d(0.0, -10.0));
+   vertices.push_back(Eigen::Vector2d(-5.0, 5.0));
+   vertices.push_back(Eigen::Vector2d(0.0, 4.0));
+   vertices.push_back(Eigen::Vector2d(5.0, 5.0));
+   SetPolygon(vertices);
    defaultPolygon = polygon;
 
    lastFireTime = clock();
@@ -174,7 +175,8 @@ void Player::TurnLeft()
    rotation = rotation * vRot.inverse();
    for (int i = 0; i < polygon.size(); ++i)
    {
-      polygon[i] = rotation * defaultPolygon[i];
+      polygon[i].start = rotation * defaultPolygon[i].start;
+      polygon[i].end = rotation * defaultPolygon[i].end;
    }
 }
 
@@ -190,7 +192,8 @@ void Player::TurnRight()
    rotation = rotation * vRot;
    for (int i = 0; i < polygon.size(); ++i)
    {
-      polygon[i] = rotation * defaultPolygon[i];
+      polygon[i].start = rotation * defaultPolygon[i].start;
+      polygon[i].end = rotation * defaultPolygon[i].end;
    }
 }
 

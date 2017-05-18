@@ -106,7 +106,7 @@ void Renderer::DrawObject(GameObject *gameObject)
    if (initialized == true)
    {
       std::pair<std::vector<short int>,
-                std::vector<short int> > verts = gameObject->GetPolygon();
+                std::vector<short int> > verts = gameObject->GetPolygonVertices();
       polygonColor(sdlRenderer,
                    verts.first.data(),
                    verts.second.data(),
