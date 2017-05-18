@@ -113,7 +113,10 @@ Player::~Player()
 void Player::Update(GameState *const gameState)
 {
    GameObject::Update(gameState);
-   velocity *= damping;
+
+   velocity *= damping; // slow down over time
+
+   // Update based on controller commands
    std::vector<Controller::Command> commands = controller->Update();
    for (std::vector<Controller::Command>::iterator command = commands.begin();
        command != commands.end();
@@ -168,8 +171,10 @@ void Player::OnCollisionWith(GameObject::ColliderType colliderType,
    {
       case GameObject::ColliderType::ASTEROID:
          gameState->DecreaseLives(); // Colliding with asteroid removes a life
+         // Player is destroyed, and a new one is placed back at its original 
+         // starting position
+         newGameObjects.push_back(new Player(startPos, controller)); 
          isActive = false;
-         newGameObjects.push_back(new Player(startPos, controller));
          break;
       
       case GameObject::ColliderType::BULLET:

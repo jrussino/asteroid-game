@@ -50,7 +50,7 @@ GameState::GameState(int nLives, int fps, int screenWidth, int screenHeight) :
    nLives(nLives),
    score(0),
    isActive(true),
-   fps(30),
+   fps(fps),
    screenWidth(screenWidth),
    screenHeight(screenHeight)
 {

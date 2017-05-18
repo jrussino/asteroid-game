@@ -64,35 +64,34 @@ KeyboardController::~KeyboardController()
 std::vector<Controller::Command> KeyboardController::Update()
 {
    std::vector<Controller::Command> commands;
-   SDL_PumpEvents();
+   SDL_PumpEvents(); // flush latest state so we can grab it
 
+   // Handle keyboard state
    const Uint8* keyboardState = SDL_GetKeyboardState(NULL); 
-   if (keyboardState[SDL_SCANCODE_LEFT])
+   if (keyboardState[SDL_SCANCODE_LEFT]) // left arrow
    {
       commands.push_back(Controller::Command::TURN_LEFT);
    }
-   if (keyboardState[SDL_SCANCODE_RIGHT])
+   if (keyboardState[SDL_SCANCODE_RIGHT]) // right arrow
    {
       commands.push_back(Controller::Command::TURN_RIGHT);
    }
-   if (keyboardState[SDL_SCANCODE_LCTRL])
+   if (keyboardState[SDL_SCANCODE_LCTRL]) // left control
    {
       commands.push_back(Controller::Command::FIRE);
    }
-   if (keyboardState[SDL_SCANCODE_LALT])
+   if (keyboardState[SDL_SCANCODE_LALT]) // left alt
    {
       commands.push_back(Controller::Command::THRUST);
    }
    
-   //Handle events on queue
+   // Handle events
    while (SDL_PollEvent(&event) != 0)
    {
-      //User requests quit
-      if (event.type == SDL_QUIT)
+      if (event.type == SDL_QUIT) // User requests quit, e.g. by x-ing out of the window
       {
          commands.push_back(Controller::Command::QUIT);
       }
-      //User presses a key
       else if (event.type == SDL_KEYDOWN)
       {
          if (event.key.keysym.sym == SDLK_ESCAPE)

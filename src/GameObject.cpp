@@ -80,6 +80,7 @@ void GameObject::Update(GameState * const gameState)
 {
    newGameObjects.clear();
 
+   // Update position with velocity, wrapping around the screen borders
    position(0) = wrapValue(position(0) + velocity(0),
                      0, 
                      gameState->GetScreenWidth());
@@ -214,11 +215,22 @@ GameObject::ColliderType GameObject::GetColliderType()
 // global methods
 //-------------------------------
 
+//------------------------------------------------------------------------------
+// double wrapValue()
+//------------------------------------------------------------------------------
+/**
+ * Wraps value to range
+ *
+ * @return wrappedValue wrapped to specified range
+ */
+//------------------------------------------------------------------------------
 double wrapValue(double value, double minVal, double maxVal)
 {
-   double range = maxVal - minVal;
-   double tmpVal = value + range;
-   return fmod(tmpVal, range);
+   if ((maxVal - minVal) < 1e-5)
+   {
+      return maxVal;
+   }
+   return fmod(value + maxVal - minVal, maxVal - minVal);
 }
 
 } // namespace asteroid_game

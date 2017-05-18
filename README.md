@@ -6,7 +6,6 @@ A bare-bones clone of the popular video game "Asteroids".
 Simply `make` from the root directory,  and then run `./bin/asteroid-game` from
 the command line to play.
 
-
 # REQUIREMENTS
 This software has been tested under Ubuntu 16.04. It requires the following
 packages to compile:
@@ -14,6 +13,11 @@ packages to compile:
 * libsdl2-gfx-dev    (SDL2-gfx, for geometric primitives) 
 * libeigen3-dev      (Eigen3, for linear algebra primitives and operations)
 
+# DEFAULT CONTROLS
+* Turn Right (clockwise) - Right arrow
+* Turn Left (counter-clockwise) - Left arrow
+* Thrust - left Alt
+* Fire - left Ctrl
 
 # INCLUDED FILES
 * Asteroid.cpp/.hpp - Asteroid (implementation of GameObject). Increases score

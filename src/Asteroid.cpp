@@ -49,6 +49,8 @@ Asteroid::Asteroid(const Eigen::Vector2d &position,
    GameObject(position, GameObject::ColliderType::ASTEROID)
 {
    this->velocity = velocity;
+
+   //NOTE: intentionally using default polygon from base class
 }
 
 //------------------------------------------------------------------------------
