@@ -40,27 +40,46 @@ namespace asteroid_game {
 /**
  * Constructs Player object with initial position and a controller.
  *
- * @param <position>   initial position vector
+ * @param <position> initial position vector
  * @param <controller> object that can alter player state (e.g. based on
  * keyboard/joystick inputs, or some algorithm)
+ * @param <double> acceleration in pixels/s^2
+ * @param <double> damping coefficent - decreases velocity over time
+ * @param <const Eigen::Vector2d &> forward indicates default forward direction
+ * @param <clock_t> bulletLifetime how long bullets persist before disappearing
+ * (in clock units)
+ * @param <clock_t> fireRefresh how long to wait between firing bullets (in
+ * clock units)
+ * @param <double> vBullet velocity for fired bullets (in pixels/second)
+ * @param <const Eigen::Rotation2D<double> &> vRot describes rotation speed
+ * @param <const Eigen::Rotation2D<double> &> rotation current rotation
  *
- * TODO make other member vars configurable
  */
 //------------------------------------------------------------------------------
-Player::Player(const Eigen::Vector2d &position, Controller *const controller) :
+Player::Player(const Eigen::Vector2d &position, 
+               Controller *const controller,
+               double acceleration,
+               double damping,
+               const Eigen::Vector2d &forward,
+               clock_t bulletLifetime,
+               clock_t fireRefresh,
+               double vBullet,
+               const Eigen::Rotation2D<double> &vRot,
+               const Eigen::Rotation2D<double> &rotation) :
    GameObject(position, GameObject::ColliderType::PLAYER),
    controller(controller),
    startPos(position),
-   acceleration(0.2),
-   damping(0.995),
-   forward(0.0,-1.0),
-   bulletLifetime(18000),
-   fireRefresh(5000),
-   vBullet(10.0),
-   vRot(0.1),
-   rotation(0.0)
+   acceleration(acceleration),
+   damping(damping),
+   forward(forward),
+   bulletLifetime(bulletLifetime),
+   fireRefresh(fireRefresh),
+   vBullet(vBullet),
+   vRot(vRot),
+   rotation(rotation)
 {
    // Player ship is an arrowhead
+   // TODO this should be configurable
    polygon.clear();
    polygon.push_back(Eigen::Vector2d(0.0, -10.0));
    polygon.push_back(Eigen::Vector2d(-5.0, 5.0));

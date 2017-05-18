@@ -39,7 +39,16 @@ namespace asteroid_game {
 class Player : public GameObject
 {
    public:
-   Player(const Eigen::Vector2d &position, Controller *const controller);
+   Player(const Eigen::Vector2d &position, 
+          Controller *const controller,
+          double acceleration=0.2,
+          double damping=0.995,
+          const Eigen::Vector2d &forward=Eigen::Vector2d(0.0, -1.0),
+          clock_t bulletLifetime=18000,
+          clock_t fireRefresh=5000,
+          double vBullet=10.0,
+          const Eigen::Rotation2D<double> &vRot=Eigen::Rotation2D<double>(0.1),
+          const Eigen::Rotation2D<double> &rotation=Eigen::Rotation2D<double>(0.0));
    ~Player();
    void Update(GameState *const gameState);
    void OnCollisionWith(GameObject::ColliderType colliderType,
