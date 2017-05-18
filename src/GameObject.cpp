@@ -133,7 +133,7 @@ std::pair<std::vector<short int>,
 {
    std::vector<short int> vertsX; 
    std::vector<short int> vertsY; 
-   for (std::vector<Eigen::Vector2d>::iterator vertex = polygon.begin();
+   for (std::vector<Eigen::Vector2d>::const_iterator vertex = polygon.begin();
        vertex != polygon.end();
        ++vertex)
    {

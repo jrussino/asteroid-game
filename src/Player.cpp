@@ -118,7 +118,7 @@ void Player::Update(GameState *const gameState)
 
    // Update based on controller commands
    std::vector<Controller::Command> commands = controller->Update();
-   for (std::vector<Controller::Command>::iterator command = commands.begin();
+   for (std::vector<Controller::Command>::const_iterator command = commands.begin();
        command != commands.end();
        ++command)
    {
